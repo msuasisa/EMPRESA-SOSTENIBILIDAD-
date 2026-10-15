@@ -1,6 +1,6 @@
 # Repte Som Professionals · Som Sostenibles
 
-Web interactiva del proyecto educativo Zinkers FP · Som Sostenibles, con un caso ilustrativo editable: **ReVerda**, un taller ficticio de recuperación y reparación de mobiliario.
+Web interactiva del proyecto educativo Zinkers FP · Som Sostenibles, con la propuesta de empresa **Hidrogota**: regeneración de aguas residuales, principalmente urbanas, para riego y otros usos no potables autorizados.
 
 ## Abrir la web
 
@@ -25,9 +25,11 @@ Visita http://127.0.0.1:4173. No se necesitan instalaciones adicionales ni compi
 
 ## Funcionalidades
 
+- Identidad visual de Hidrogota en azul agua y verde menta, con ilustración SVG de una gota.
+- Proceso simplificado de separación, tratamiento, regeneración y control; clientes municipales y fase agrícola por validar.
 - Cuatro preguntas sobre el propósito empresarial, organizadas en pestañas accesibles.
 - Síntesis del propósito y la misión de la empresa.
-- Los 17 ODS seleccionables y cuatro objetivos prioritarios justificados para el caso.
+- Los 17 ODS seleccionables y cuatro objetivos prioritarios justificados (6, 12, 11 y 2), con el ODS 9 como conexión complementaria.
 - Módulos ambientales, sociales y de gobernanza con acciones e indicadores.
 - Matriz de ocho riesgos y oportunidades con filtros combinados por ASG y ODS.
 - Autoevaluación basada en los cinco criterios visibles de la rúbrica facilitada: máximo conjunto de 8,5 puntos.
@@ -35,7 +37,7 @@ Visita http://127.0.0.1:4173. No se necesitan instalaciones adicionales ni compi
 - Guardado en el navegador mediante `localStorage`, sin sincronización entre dispositivos.
 - Descarga de un dossier Markdown e impresión del proyecto completo.
 - Adaptación a móvil y escritorio, navegación por teclado y respeto de la preferencia de movimiento reducido.
-- Presentación de 15 diapositivas con pantalla completa, índice, temporizador y guion de apoyo.
+- Presentación de 15 diapositivas con pantalla completa, índice, temporizador y guion para una exposición de unos 15 minutos.
 
 ## Exponer el proyecto
 
@@ -60,7 +62,7 @@ El guion es visible para quienes ven la pantalla cuando se despliega. El tempori
 
 El botón **Editar proyecto** permite cambiar las respuestas y los datos del equipo. Para adaptar el análisis a otra actividad, modifica también las estructuras `priority`, `secondary`, `asg` y `matrix` de `app.js`, y los textos de presentación de `index.html`.
 
-Las respuestas guardadas en el navegador prevalecen sobre los valores iniciales de `defaults`. Para revisar nuevos valores iniciales, utiliza un perfil limpio o elimina únicamente la clave `som-sostenibles-project-v1` del almacenamiento local de esta web.
+Las respuestas de Hidrogota se guardan en `hidrogota-project-v2` y prevalecen sobre `defaults`. Al abrir la nueva versión por primera vez se recuperan el equipo y el curso del ejemplo anterior, si existían. Los textos, la misión y la puntuación empiezan con el nuevo proyecto; el almacenamiento antiguo permanece intacto en `som-sostenibles-project-v1` para no borrar las ediciones previas.
 
 La rúbrica de la imagen repite los descriptores de ODS en la fila ASG. Se conservan sus niveles y puntuaciones, con una nota aclaratoria. La comprobación de riesgos es complementaria y no añade puntos. La autoevaluación no sustituye la valoración del profesorado.
 
@@ -74,6 +76,7 @@ Las tipografías DM Sans y Manrope se cargan desde Google Fonts; se emplean fuen
 
 - [Agenda 2030 · Naciones Unidas](https://sdgs.un.org/es/goals)
 - [Zinkers · Fundación Repsol](https://zinkers.fundacionrepsol.com)
+- [Reutilización de aguas tratadas · MITECO](https://www.miteco.gob.es/es/agua/temas/concesiones-y-autorizaciones/reutilizacion-aguas-depuradas.html)
 - Rúbrica parcial: imagen facilitada para el proyecto.
 
-Proyecto educativo independiente. ReVerda, sus compromisos y sus indicadores son ejemplos propuestos, sin resultados reales verificados.
+Proyecto educativo independiente basado en la idea facilitada por el equipo. Hidrogota, su piloto, sus acuerdos, instalaciones e indicadores se presentan como propuestas, sin resultados operativos acreditados. No se propone agua para beber. El origen ganadero requiere una evaluación específica y no se equipara automáticamente al urbano.

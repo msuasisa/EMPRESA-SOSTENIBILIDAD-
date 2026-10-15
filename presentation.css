@@ -125,3 +125,19 @@
 @media(prefers-reduced-motion:reduce){#presentation .deck-slide,#presentation .deck-slide *,#presentation .deck-header,#presentation .deck-footer,#presentation .deck-stage,.deck-message{animation:none!important;transition:none!important}.deck-canvas .deck-slide.is-leaving{display:none!important}}
 @media print{#presentation[open]{display:none!important}}
 .deck-canvas .deck-slide-inner{transform:scale(var(--deck-content-scale,1));transform-origin:center}.deck-canvas .deck-idea-list li{overflow-wrap:anywhere}
+#presentation .deck-stage[data-theme=dark]{background:#124758}
+.deck-canvas .deck-theme-dark{background:radial-gradient(ellipse at 85% 35%,#1c6871 0%,#124758 55%,#103b4a 100%);color:#f1f8f7}
+.deck-canvas .deck-theme-dark em{color:#9be0cf}.deck-canvas .deck-theme-light em{color:#217b88}
+.deck-canvas .deck-cover-title em{color:#a5e8da}
+.deck-canvas .deck-process-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:19px;margin:36px 0}
+.deck-process-flow article{position:relative;padding:27px 22px;border-radius:19px;background:#ffffff0d;border:1px solid #ffffff24}
+.deck-process-flow article:not(:last-child):after{content:'→';position:absolute;top:53px;right:-18px;font-size:24px;color:#a5e8da;z-index:2}
+.deck-process-flow article>span{font-size:39px;line-height:1.2;color:#a5e8da;font-weight:600}
+.deck-process-flow h3{font-size:25px;margin:18px 0 10px}.deck-process-flow p{font-size:19px;line-height:1.6}
+.deck-process-result{display:flex;gap:28px;align-items:center;justify-content:center;font-size:13px;letter-spacing:2px;color:#bce9dc;padding:19px;border-block:1px solid #ffffff24}
+.deck-process-result b{font-size:28px;font-weight:400}
+.deck-shared-action{margin-top:25px;padding:21px 26px;background:#ffffff09;border:1px solid #ffffff20;border-radius:15px}
+.deck-shared-action strong{font-size:10px;letter-spacing:2px;color:#a5e8da}.deck-shared-action p{font-size:19px;line-height:1.6;margin-top:9px}
+.deck-canvas .deck-metric-unit{font-size:42px}
+.deck-canvas .deck-theme-dark .deck-process-flow p,.deck-canvas .deck-theme-dark .deck-shared-action p{color:#d3e9e8}
+.deck-canvas .deck-theme-dark .deck-metric-note{color:#bbd7d9}

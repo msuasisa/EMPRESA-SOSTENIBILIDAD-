@@ -57,85 +57,99 @@
   const sentences = text => (String(text).match(/[^.!?]+(?:[.!?]+|$)/g) || [String(text)]).map(s => s.trim()).filter(Boolean);
   const paragraphs = blocks => blocks.map(block => `<p>${esc(block)}</p>`).join('');
   const titleBlock = (kicker, title, subtitle = '') => `<div class="deck-section-heading"><div class="deck-kicker">${esc(kicker)}</div><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">${title}</h2>${subtitle ? `<p class="deck-subtitle">${esc(subtitle)}</p>` : ''}</div>`;
-  const ringArt = `<div class="deck-cover-art" aria-hidden="true"><div class="deck-orbit"></div><div class="deck-orbit"></div><svg viewBox="0 0 420 420" fill="none"><defs><linearGradient id="deck-ring-gradient" x1="70" y1="80" x2="330" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#dbedb3"/><stop offset="1" stop-color="#508f6b"/></linearGradient></defs><ellipse cx="210" cy="340" rx="117" ry="15" fill="#123b2b"/><path d="M285 109A117 117 0 1 0 314 264" stroke="url(#deck-ring-gradient)" stroke-width="48" stroke-linecap="round"/><path d="M277 77L327 142L249 144Z" fill="#b5d590" stroke="#b5d590" stroke-width="5" stroke-linejoin="round"/><path d="M210 263Q185 231 205 180" stroke="#c7dfa1" stroke-width="4" stroke-linecap="round"/><path d="M202 226Q158 222 164 187Q199 183 202 226Z" fill="#8cb878"/><path d="M200 209Q199 168 239 161Q252 197 200 209Z" fill="#c5dfa3"/></svg><span class="deck-art-label">RECUPERAR · TRANSFORMAR · VOLVER A CREAR</span></div>`;
+  const ringArt = `<div class="deck-cover-art" aria-hidden="true"><div class="deck-orbit"></div><div class="deck-orbit"></div><svg viewBox="0 0 420 420" fill="none"><defs><linearGradient id="deck-water" x1="120" y1="80" x2="300" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#d7fff1"/><stop offset=".5" stop-color="#82dcda"/><stop offset="1" stop-color="#2088a8"/></linearGradient></defs><ellipse cx="210" cy="350" rx="160" ry="29" stroke="#7ccece" opacity=".3"/><ellipse cx="210" cy="350" rx="120" ry="15" fill="#062e3b"/><path d="M210 55C188 101 112 173 112 237a98 98 0 0 0 196 0C308 173 232 101 210 55Z" fill="url(#deck-water)"/><path d="M150 232c0-27 15-49 32-71" stroke="#e1fff7" stroke-width="11" stroke-linecap="round" opacity=".7"/><path d="M165 266c23 25 62 29 92 4" stroke="#d3fff0" stroke-width="4" stroke-linecap="round"/></svg><span class="deck-art-label">REGENERAR · CONTROLAR · REUTILIZAR</span></div>`;
 
   function buildSlides() {
     const questionTags = ['Nuestra razón de ser', 'La empresa que queremos ser', 'Valor para nuestros grupos de interés', 'El entorno al que respondemos'];
     const list = [{
-      title: 'Som Sostenibles', chapter: 'Apertura', theme: 'dark',
-      body: `<div class="deck-cover-grid"><div><div class="deck-kicker">ZINKERS FP · REPTE SOM PROFESSIONALS</div><h2 class="deck-cover-title" id="deck-slide-title" tabindex="-1"><span>El futuro también es nuestra profesión.</span>Som<br><em>Sostenibles.</em></h2><p class="deck-cover-description">Un propósito claro.<br>Decisiones que crean valor.<br>Una nueva forma de hacer empresa.</p><div class="deck-company"><span aria-hidden="true">↗</span><strong>${esc(state.company)}</strong><small>CASO ILUSTRATIVO<br>PROYECTO EDUCATIVO</small></div></div>${ringArt}</div>`,
-      notes: paragraphs([`Presentamos el desarrollo del Repte Som Professionals a través del caso ilustrativo de ${state.company}.`, `Equipo: ${state.team}. Curso: ${state.course}.`, 'El recorrido conecta cuatro preguntas sobre el propósito con los ODS, los criterios ASG, los riesgos y los indicadores de seguimiento. Las actuaciones son propuestas; no se presentan como resultados verificados.'])
+      title: 'Hidrogota', chapter: 'Apertura · 0:45', theme: 'dark',
+      body: `<div class="deck-cover-grid"><div><div class="deck-kicker">ZINKERS FP · REPTE SOM PROFESSIONALS</div><h2 class="deck-cover-title" id="deck-slide-title" tabindex="-1"><span>Som Sostenibles · Repte Som Professionals</span>Hidro<br><em>gota.</em></h2><p class="deck-cover-description">Cuidar el agua.<br>Cuidar a las personas.<br>Dar otra oportunidad a cada gota.</p><div class="deck-company"><span aria-hidden="true">↗</span><strong>${esc(state.company)}</strong><small>NUESTRA EMPRESA<br>PROPUESTA EDUCATIVA</small></div></div>${ringArt}</div>`,
+      notes: paragraphs([`Presentamos nuestro proyecto de empresa para el Repte Som Professionals: ${state.company}.`, `Equipo: ${state.team}. Curso: ${state.course}.`, 'El recorrido conecta cuatro preguntas sobre el propósito con los ODS, los criterios ASG, los riesgos y los indicadores de seguimiento. Las actuaciones son propuestas; no se presentan como resultados verificados.'])
     }];
+
+    list.push({
+      title:'¿A quién ayudamos?', chapter:'La necesidad y el servicio · 1:15', theme:'light',
+      body:titleBlock('EL PROBLEMA Y NUESTRA RESPUESTA', 'Queremos parques verdes.<br><em>También debemos cuidar el agua.</em>') + '<div class="deck-cards"><article class="deck-card"><span class="deck-card-tag">LA NECESIDAD</span><h3>Menos dependencia del agua dulce</h3><p>La sequía y la presión sobre el agua obligan a buscar cómo aprovechar mejor la que ya usamos.</p></article><article class="deck-card"><span class="deck-card-tag">NUESTRO CLIENTE</span><h3>Ayuntamientos y zonas verdes</h3><p>Proponemos vender un servicio de suministro de agua regenerada y seguimiento para el riego autorizado.</p></article><article class="deck-card"><span class="deck-card-tag">CÓMO EMPEZARÍAMOS</span><h3>Un parque, un piloto</h3><p>Comprobar demanda, costes, tratamiento, permisos y distribución antes de ampliar el servicio.</p></article><article class="deck-card"><span class="deck-card-tag">POSIBLE SIGUIENTE PASO</span><h3>Agricultura</h3><p>Estudiar cada cultivo y las condiciones del riego. El origen ganadero requiere una evaluación específica.</p></article></div>',
+      notes:paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. Imaginad un parque que necesita riego. Nuestra idea es estudiar si parte de esa demanda puede atenderse con agua que ya hemos utilizado, después de tratarla y comprobar su calidad.', 'El propósito es social y ambiental, pero la empresa necesita ingresos. El cliente propuesto es el ayuntamiento o el gestor de zonas verdes, que pagaría por el servicio y su seguimiento. No hemos calculado todavía tarifas ni firmado contratos.', 'La agricultura sería una segunda fase. Las aguas de origen animal no se consideran equivalentes a las urbanas: necesitan una evaluación y un diseño adecuados.'])
+    }, {
+      title:'¿Cómo vuelve a ser útil?', chapter:'El proceso explicado fácil · 1:30', theme:'dark',
+      body:titleBlock('DEL AGUA USADA A UN NUEVO USO', 'El agua no se crea.<br><em>Se recupera.</em>') + '<div class="deck-process-flow"><article><span>01</span><h3>Separar</h3><p>Retirar sólidos.</p></article><article><span>02</span><h3>Tratar</h3><p>Reducir materia orgánica con microorganismos.</p></article><article><span>03</span><h3>Regenerar</h3><p>Filtrar y desinfectar según el destino.</p></article><article><span>04</span><h3>Comprobar</h3><p>Controlar la calidad antes del suministro.</p></article></div><div class="deck-process-result"><span>AGUAS RESIDUALES URBANAS</span><b>→</b><span>RIEGO AUTORIZADO</span></div><p class="deck-metric-note">Esquema simplificado. Tratamiento adaptado al origen y al uso. No proponemos agua para beber.</p>',
+      notes:paragraphs(['Tiempo orientativo: 1 minuto y 30 segundos. No hacemos agua de la nada: recuperamos el agua que ya forma parte de las aguas residuales, principalmente urbanas de origen humano.', 'Primero se separan sólidos. Después, un tratamiento biológico ayuda a reducir la materia orgánica. La regeneración incorpora las etapas necesarias, como filtración y desinfección, para el uso previsto.', 'El proceso no es una receta universal. Necesita diseño técnico, gestión de residuos, análisis y autorizaciones. Si los controles no cumplen, se retiene el agua y no se suministra.', 'Los sensores permitirían vigilar ciertos parámetros, pero no sustituyen todos los análisis. No disponemos de una planta real ni de datos en directo.', 'Referencia: MITECO, reutilización de aguas tratadas: https://www.miteco.gob.es/es/agua/temas/concesiones-y-autorizaciones/reutilizacion-aguas-depuradas.html'])
+    });
 
     questions.forEach((question, i) => {
       const parts = sentences(state.answers[i]);
       const lead = short(parts[0] || state.answers[i], 245);
       const supporting = parts.slice(1, 3).map(text => short(text, 220));
       list.push({
-        title: question.title, chapter: 'Propósito · ' + (i + 1) + ' de 4', theme: 'light',
+        title: question.title, chapter: 'Propósito · ' + (i + 1) + ' de 4 · 0:45', theme: 'light',
         body: `<div class="deck-question-layout"><div class="deck-question-heading"><div class="deck-kicker">ACTIVIDAD 1 · ${esc(question.label)}</div><div class="deck-big-number" aria-hidden="true">0${i + 1}</div><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">${esc(question.title)}</h2><span class="deck-pill">${esc(questionTags[i])}</span></div><div><blockquote class="deck-quote">${esc(lead)}</blockquote>${supporting.length ? `<ul class="deck-idea-list">${supporting.map(text => `<li>${esc(text)}</li>`).join('')}</ul>` : ''}<span class="deck-excerpt-note">Ideas principales de la respuesta · texto completo en el guion</span></div></div>`,
-        notes: paragraphs([state.answers[i], question.note])
+        notes: paragraphs(['Tiempo orientativo: 45 segundos. Resumid la idea principal y añadid un ejemplo; no hace falta leer el párrafo entero.', state.answers[i], question.note])
       });
     });
 
     list.push({
-      title: 'Propósito y misión', chapter: 'Entregable 1', theme: 'dark',
+      title: 'Propósito y misión', chapter: 'Entregable 1 · 0:45', theme: 'dark',
       body: `<div class="deck-mission"><div class="deck-kicker">ENTREGABLE 1 · NUESTRA BRÚJULA</div><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">Un propósito para decidir.<br><em>Una misión para actuar.</em></h2><p class="deck-mission-quote">${esc(short(state.mission, 600))}</p><div class="deck-label-row"><span>${esc(state.company)}</span><span>PROPÓSITO + MISIÓN</span><span>DEL PORQUÉ AL CÓMO</span></div></div>`,
       notes: paragraphs([state.mission, 'Explicad qué necesidad atiende la empresa, a quién aporta valor y cómo se traduce ese propósito en su actividad diaria.'])
     });
 
-    const goals = [8, 12, 13, 16];
+    const goals = [6, 12, 11, 2];
     list.push({
-      title: 'Nuestros ODS prioritarios', chapter: 'Actividad 2 · ODS', theme: 'light',
+      title: 'Nuestros ODS prioritarios', chapter: 'Actividad 2 · ODS · 1:15', theme: 'light',
       body: titleBlock('ACTIVIDAD 2 · IMPACTO CON DIRECCIÓN', '17 objetivos.<br><em>Cuatro prioridades justificadas.</em>') + `<div class="deck-cards">${goals.map(n => `<article class="deck-card deck-ods-card"><span class="deck-ods-number" style="--deck-ods:${ods[n - 1][2]}">${n}</span><div><span class="deck-card-tag">OBJETIVO DE DESARROLLO SOSTENIBLE</span><h3>${esc(ods[n - 1][1])}</h3><p>${esc(short(priority[n].why, 160))}</p></div></article>`).join('')}</div>`,
-      notes: goals.map(n => `<p><strong>ODS ${n} · ${esc(ods[n - 1][1])}</strong><br>${esc(priority[n].why)}<br><br>${esc(priority[n].action)}<br><br>${esc(priority[n].target)}</p>`).join('')
+      notes: paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. ODS 6 es el núcleo; ODS 12 explica el uso responsable del recurso; ODS 11 conecta con parques y ciudades; ODS 2 es una contribución agrícola por validar. ODS 9 complementa el proyecto mediante infraestructura, sensores y redes separadas.']) + goals.map(n => `<p><strong>ODS ${n} · ${esc(ods[n - 1][1])}</strong><br>${esc(priority[n].why)}<br><br>${esc(priority[n].action)}<br><br>${esc(priority[n].target)}</p>`).join('')
     });
 
     list.push({
-      title: 'Criterios ASG', chapter: 'Actividad 2 · ASG', theme: 'light',
+      title: 'Criterios ASG', chapter: 'Actividad 2 · ASG · 1:15', theme: 'light',
       body: titleBlock('DEL COMPROMISO A LA GESTIÓN', 'Tres miradas.<br><em>Una misma responsabilidad.</em>') + `<div class="deck-asg-grid">${asg.map(a => `<article class="deck-card deck-asg-card"><span class="deck-asg-letter" aria-hidden="true">${a.key}</span><h3>${esc(a.name)}</h3><p>${esc(a.body)}</p><div class="deck-asg-action"><strong>ACCIÓN PROPUESTA</strong><p>${esc(short(a.action, 160))}</p></div></article>`).join('')}</div>`,
-      notes: asg.map(a => `<p><strong>${esc(a.name)}</strong><br>${esc(a.body)}<br><br>${esc(a.action)}<br><br>${esc(a.evidence)}</p>`).join('')
+      notes: paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. Ambiental es cómo cuidamos el agua y gestionamos los impactos; social, cómo protegemos e informamos a las personas; gobernanza, quién responde y cómo se comprueba lo que hacemos.']) + asg.map(a => `<p><strong>${esc(a.name)}</strong><br>${esc(a.body)}<br><br>${esc(a.action)}<br><br>${esc(a.evidence)}</p>`).join('')
     });
 
-    const riskPairs = [
-      {goal:12,title:'De un material irregular<br>a un <em>diseño reparable.</em>',name:'Materiales y circularidad'},
-      {goal:13,title:'Menos kilómetros.<br><em>Más sentido en cada ruta.</em>',name:'Energía y clima'},
-      {goal:8,title:'Cuidar al equipo.<br><em>Hacer crecer el talento.</em>',name:'Personas y formación'},
-      {goal:16,title:'Que cada promesa<br>tenga <em>una evidencia.</em>',name:'Ética y trazabilidad'}
+    const riskGroups = [
+      {name:'Calidad y viabilidad',title:'Si no cumple la calidad,<br><em>se detiene el suministro.</em>',category:'A',chapter:'Entregable 2 · Ambiental · 1:15',
+       risk:'Un fallo de tratamiento puede causar daños. La energía, el bombeo y la distribución también pueden hacer inviable el servicio.',
+       opportunity:'Reutilizar agua para zonas verdes y, después, estudiar el riego agrícola con un diseño que sea viable.',
+       action:'Retener ante un incumplimiento y corregir. Medir calidad, energía y coste por m³ en el piloto.'},
+      {name:'Confianza y responsabilidad',title:'La confianza necesita<br><em>pruebas y responsables.</em>',category:'SG',chapter:'Entregable 2 · Social y gobernanza · 1:15',
+       risk:'El origen del agua puede generar rechazo. Los permisos incompletos y la falta de registros comprometen el proyecto.',
+       opportunity:'Explicar con claridad, escuchar al vecindario y publicar controles comprensibles para construir confianza.',
+       action:'Tramitar permisos, asignar responsables, documentar suministros y atender las dudas de la comunidad.'}
     ];
-    riskPairs.forEach(pair => {
-      const rows = ['risk', 'opportunity'].map(type => matrix.find(row => row.type === type && row.ods.includes(pair.goal)));
+    riskGroups.forEach(group => {
+      const rows=matrix.filter(row=>group.category.includes(row.asg));
       list.push({
-        title: pair.name, chapter: 'Entregable 2 · ODS ' + pair.goal, theme: 'dark',
-        body: titleBlock('ENTREGABLE 2 · RISCOS I OPORTUNITATS', pair.title) + `<div class="deck-risk-grid">${rows.map((row, i) => `<article class="deck-card deck-risk-card"><div class="deck-risk-label"><span aria-hidden="true">${i ? '↗' : '↘'}</span>${i ? 'OPORTUNIDAD' : 'RIESGO'}</div><h3>${esc(row.title)}</h3><p>${esc(row.description)}</p><div class="deck-risk-response"><span>PRIMERA RESPUESTA PROPUESTA</span><p>${esc(short(sentences(row.response)[0], 185))}</p></div></article>`).join('')}</div><div class="deck-risk-bottom"><span class="deck-pill">ODS ${pair.goal} · ${esc(asg.find(a => a.key === rows[0].asg).name)}</span><span>Responsables, seguimiento e indicadores en el guion</span></div>`,
-        notes: rows.map((row, i) => `<p><strong>${i ? 'Oportunidad' : 'Riesgo'}: ${esc(row.title)}</strong><br>${esc(row.description)}<br><br>${esc(row.response)}<br><br>${esc(row.level)}: valoración orientativa del caso ilustrativo.</p>`).join('')
+        title:group.name,chapter:group.chapter,theme:'dark',
+        body:titleBlock('ENTREGABLE 2 · RISCOS I OPORTUNITATS',group.title) + `<div class="deck-risk-grid"><article class="deck-card deck-risk-card"><div class="deck-risk-label">↘ RIESGOS</div><h3>Lo que debemos anticipar</h3><p>${esc(group.risk)}</p></article><article class="deck-card deck-risk-card"><div class="deck-risk-label">↗ OPORTUNIDADES</div><h3>Lo que podemos impulsar</h3><p>${esc(group.opportunity)}</p></article></div><div class="deck-shared-action"><strong>PRIMERA RESPUESTA PROPUESTA</strong><p>${esc(group.action)}</p></div>`,
+        notes:paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. Mostrad cómo se relaciona cada riesgo con una acción y una evidencia. La matriz completa de la web conserva los ocho registros y sus filtros.']) + rows.map(row=>`<p><strong>${row.type==='risk'?'Riesgo':'Oportunidad'}: ${esc(row.title)}</strong><br>${esc(row.description)}<br><br>${esc(row.response)}</p>`).join('')
       });
     });
 
     const metrics = [
-      {unit:'kg',title:'Materiales recuperados',goal:12},
-      {unit:'kWh',title:'Energía por pieza',goal:13},
-      {unit:'h',title:'Formación y seguridad',goal:8},
-      {unit:'%',title:'Compras con trazabilidad',goal:16}
+      {unit:'m³',title:'Agua por destino autorizado',goal:6,description:'Volumen suministrado, con registro del destino y de los controles de calidad.'},
+      {unit:'kWh/m³',title:'Energía y eficiencia',goal:6,description:'Energía consumida por cada metro cúbico tratado. También calcularíamos el coste por m³.'},
+      {unit:'%',title:'Aprovechamiento del agua',goal:12,description:'Agua suministrada para reutilización respecto al volumen que entra en el sistema.'},
+      {unit:'m²',title:'Zonas verdes atendidas',goal:11,description:'Superficie del piloto atendida, volumen de riego e incidencias del servicio.'}
     ];
     list.push({
-      title: 'Cómo mediremos el avance', chapter: 'Seguimiento del impacto', theme: 'light',
-      body: titleBlock('MEDIR · APRENDER · MEJORAR', 'El compromiso se demuestra<br><em>con evidencias.</em>') + `<div class="deck-cards">${metrics.map(metric => `<article class="deck-card deck-metric-card"><span class="deck-metric-unit" aria-hidden="true">${metric.unit}</span><div><span class="deck-card-tag">ODS ${metric.goal} · INDICADOR PROPUESTO</span><h3>${esc(metric.title)}</h3><p>${esc(short(priority[metric.goal].metric.replace('Indicadores propuestos: ', ''), 185))}</p></div></article>`).join('')}</div><p class="deck-metric-note">Primero estableceremos una línea de base. Las unidades representan qué queremos medir; todavía no son resultados.</p>`,
-      notes: paragraphs(['Los indicadores son propuestas de seguimiento y requieren una línea de base. No hemos atribuido cifras de ahorro, emisiones evitadas ni resultados sociales sin evidencia.', ...metrics.map(metric => priority[metric.goal].metric), 'En cada revisión deberemos explicar el método de medición, el alcance de los datos y quién se responsabiliza del registro.'])
+      title: 'Cómo mediremos el avance', chapter: 'Seguimiento del impacto · 0:45', theme: 'light',
+      body: titleBlock('MEDIR · APRENDER · MEJORAR', 'El compromiso se demuestra<br><em>con evidencias.</em>') + `<div class="deck-cards">${metrics.map(metric => `<article class="deck-card deck-metric-card"><span class="deck-metric-unit" aria-hidden="true">${metric.unit}</span><div><span class="deck-card-tag">ODS ${metric.goal} · INDICADOR PROPUESTO</span><h3>${esc(metric.title)}</h3><p>${esc(metric.description)}</p></div></article>`).join('')}</div><p class="deck-metric-note">Primero estableceremos una línea de base. Las unidades representan qué queremos medir; todavía no son resultados.</p>`,
+      notes: paragraphs(['Los indicadores son propuestas de seguimiento y requieren una línea de base. No hemos atribuido cifras de ahorro, emisiones evitadas ni resultados sociales sin evidencia.', ...metrics.map(metric => metric.title + ': ' + metric.description), 'En cada revisión deberemos explicar el método de medición, el alcance de los datos y quién se responsabiliza del registro.'])
     });
 
     const reviewed = Object.keys(state.scores).length;
     const total = Object.values(state.scores).reduce((sum, value) => sum + value, 0);
     list.push({
-      title: 'Calidad del proyecto', chapter: 'Evaluación y calidad', theme: 'light',
+      title: 'Calidad del proyecto', chapter: 'Evaluación y calidad · 0:30', theme: 'light',
       body: titleBlock('EVALUACIÓN · CLARIDAD Y COHERENCIA', 'Una buena propuesta<br><em>también se puede evaluar.</em>') + `<div class="deck-rubric-layout"><div class="deck-rubric-list">${rubric.map(r => `<div class="deck-rubric-item"><span>${esc(r.name)}</span><span>${number(r.max)} pts</span></div>`).join('')}</div><div class="deck-rubric-score"><span>${reviewed ? 'AUTOEVALUACIÓN ACTUAL' : 'FRAGMENTO DE RÚBRICA'}</span><strong>${reviewed ? number(total) : '8,5'}</strong><p>${reviewed ? 'de 8,5 puntos posibles' : 'puntos máximos visibles'}</p><small>${reviewed ? `${reviewed} de 5 criterios revisados. Valoración orientativa del equipo.` : 'Cinco criterios de la imagen facilitada. La valoración corresponde al profesorado.'}</small></div></div><p class="deck-metric-note">La revisión de riesgos es complementaria. No se añaden puntos a los niveles de la imagen.</p>`,
       notes: paragraphs(['La imagen muestra un máximo conjunto de 8,5 puntos y repite los descriptores de ODS en la fila ASG. Se han conservado los pesos y los niveles facilitados.', ...rubric.map(r => `${r.name}: ${r.id in state.scores ? number(state.scores[r.id]) : 'sin revisar'} / ${number(r.max)} puntos. ${r.help}`), 'Mostrad la relación entre propósito, actividad, ODS y riesgos. Acompañad cada compromiso de una actuación y una evidencia comprobable.'])
     });
 
     list.push({
-      title: 'Gracias · ¿Preguntas?', chapter: 'Cierre', theme: 'dark',
-      body: `<div class="deck-closing"><span class="deck-closing-symbol" aria-hidden="true">✳</span><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">Dejemos una huella<br><em>que merezca la pena.</em></h2><p class="deck-subtitle">El siguiente paso: convertir nuestros compromisos<br>en acciones y evidencias. ¿Preguntas?</p><div class="deck-closing-team"><span>${esc(state.company)}</span><span>${esc(state.team)}</span><span>${esc(state.course)}</span></div><button class="deck-return" data-deck-return>Volver a la web <span aria-hidden="true">↗</span></button></div>`,
-      notes: paragraphs(['Cerrad retomando el propósito de la empresa y una actuación que os gustaría poner a prueba.', 'Dejad espacio a preguntas del profesorado y del grupo. Si no disponéis de datos, explicad qué información necesitaríais para responder con rigor.', 'Fuentes: rúbrica facilitada, Agenda 2030 de Naciones Unidas y programa Zinkers de Fundación Repsol. Proyecto educativo independiente.'])
+      title: '¿Regaríais un parque con esta agua?', chapter: 'Conversación y cierre · 1:30', theme: 'dark',
+      body: `<div class="deck-closing"><span class="deck-closing-symbol" aria-hidden="true">✳</span><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">¿Regaríais un parque<br><em>con agua regenerada?</em></h2><p class="deck-subtitle">Si se comprueba que cumple los controles<br>para ese uso, ¿qué os gustaría saber antes?</p><div class="deck-closing-team"><span>${esc(state.company)}</span><span>${esc(state.team)}</span><span>${esc(state.course)}</span></div><button class="deck-return" data-deck-return>Volver a la web <span aria-hidden="true">↗</span></button></div>`,
+      notes: paragraphs(['Tiempo orientativo: 1 minuto y 30 segundos. La suma del recorrido es de unos 15 minutos, incluida esta conversación.', 'Preguntad al grupo si regaría un parque con esta agua y pedid una razón o una duda. Explicad que la confianza debe apoyarse en controles adecuados para el uso, no en prometer seguridad absoluta.', 'Cerrad con el lema: cuidar el agua para cuidar a las personas. El siguiente paso sería estudiar un piloto municipal.', 'Dejad espacio a preguntas del profesorado y del grupo. Si no disponéis de datos, explicad qué información necesitaríais para responder con rigor.', 'Fuentes: rúbrica facilitada, Agenda 2030 de Naciones Unidas y programa Zinkers de Fundación Repsol. Proyecto educativo independiente.'])
     });
     return list;
   }
