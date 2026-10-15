@@ -139,5 +139,8 @@
 .deck-shared-action{margin-top:25px;padding:21px 26px;background:#ffffff09;border:1px solid #ffffff20;border-radius:15px}
 .deck-shared-action strong{font-size:10px;letter-spacing:2px;color:#a5e8da}.deck-shared-action p{font-size:19px;line-height:1.6;margin-top:9px}
 .deck-canvas .deck-metric-unit{font-size:42px}
+.deck-canvas .deck-metric-card{grid-template-columns:max-content minmax(0,1fr);gap:25px;min-width:0}
+.deck-canvas .deck-metric-unit{white-space:nowrap;text-align:left;font-size:38px;letter-spacing:-1.5px}
+.deck-canvas .deck-metric-card>div{min-width:0}
 .deck-canvas .deck-theme-dark .deck-process-flow p,.deck-canvas .deck-theme-dark .deck-shared-action p{color:#d3e9e8}
 .deck-canvas .deck-theme-dark .deck-metric-note{color:#bbd7d9}

@@ -62,8 +62,8 @@
   function buildSlides() {
     const questionTags = ['Nuestra razón de ser', 'La empresa que queremos ser', 'Valor para nuestros grupos de interés', 'El entorno al que respondemos'];
     const list = [{
-      title: 'Hidrogota', chapter: 'Apertura · 0:45', theme: 'dark',
-      body: `<div class="deck-cover-grid"><div><div class="deck-kicker">ZINKERS FP · REPTE SOM PROFESSIONALS</div><h2 class="deck-cover-title" id="deck-slide-title" tabindex="-1"><span>Som Sostenibles · Repte Som Professionals</span>Hidro<br><em>gota.</em></h2><p class="deck-cover-description">Cuidar el agua.<br>Cuidar a las personas.<br>Dar otra oportunidad a cada gota.</p><div class="deck-company"><span aria-hidden="true">↗</span><strong>${esc(state.company)}</strong><small>NUESTRA EMPRESA<br>PROPUESTA EDUCATIVA</small></div></div>${ringArt}</div>`,
+      title: 'Hidrogenesis', chapter: 'Apertura · 0:45', theme: 'dark',
+      body: `<div class="deck-cover-grid"><div><div class="deck-kicker">ZINKERS FP · REPTE SOM PROFESSIONALS</div><h2 class="deck-cover-title" id="deck-slide-title" tabindex="-1"><span>Som Sostenibles · Repte Som Professionals</span>Hidro<br><em>genesis.</em></h2><p class="deck-cover-description">Cuidar el agua.<br>Cuidar a las personas.<br>Dar otra oportunidad a cada gota.</p><div class="deck-company"><span aria-hidden="true">↗</span><strong>${esc(state.company)}</strong><small>NUESTRA EMPRESA<br>PROPUESTA EDUCATIVA</small></div></div>${ringArt}</div>`,
       notes: paragraphs([`Presentamos nuestro proyecto de empresa para el Repte Som Professionals: ${state.company}.`, `Equipo: ${state.team}. Curso: ${state.course}.`, 'El recorrido conecta cuatro preguntas sobre el propósito con los ODS, los criterios ASG, los riesgos y los indicadores de seguimiento. Las actuaciones son propuestas; no se presentan como resultados verificados.'])
     }];
 
@@ -138,18 +138,10 @@
       notes: paragraphs(['Los indicadores son propuestas de seguimiento y requieren una línea de base. No hemos atribuido cifras de ahorro, emisiones evitadas ni resultados sociales sin evidencia.', ...metrics.map(metric => metric.title + ': ' + metric.description), 'En cada revisión deberemos explicar el método de medición, el alcance de los datos y quién se responsabiliza del registro.'])
     });
 
-    const reviewed = Object.keys(state.scores).length;
-    const total = Object.values(state.scores).reduce((sum, value) => sum + value, 0);
     list.push({
-      title: 'Calidad del proyecto', chapter: 'Evaluación y calidad · 0:30', theme: 'light',
-      body: titleBlock('EVALUACIÓN · CLARIDAD Y COHERENCIA', 'Una buena propuesta<br><em>también se puede evaluar.</em>') + `<div class="deck-rubric-layout"><div class="deck-rubric-list">${rubric.map(r => `<div class="deck-rubric-item"><span>${esc(r.name)}</span><span>${number(r.max)} pts</span></div>`).join('')}</div><div class="deck-rubric-score"><span>${reviewed ? 'AUTOEVALUACIÓN ACTUAL' : 'FRAGMENTO DE RÚBRICA'}</span><strong>${reviewed ? number(total) : '8,5'}</strong><p>${reviewed ? 'de 8,5 puntos posibles' : 'puntos máximos visibles'}</p><small>${reviewed ? `${reviewed} de 5 criterios revisados. Valoración orientativa del equipo.` : 'Cinco criterios de la imagen facilitada. La valoración corresponde al profesorado.'}</small></div></div><p class="deck-metric-note">La revisión de riesgos es complementaria. No se añaden puntos a los niveles de la imagen.</p>`,
-      notes: paragraphs(['La imagen muestra un máximo conjunto de 8,5 puntos y repite los descriptores de ODS en la fila ASG. Se han conservado los pesos y los niveles facilitados.', ...rubric.map(r => `${r.name}: ${r.id in state.scores ? number(state.scores[r.id]) : 'sin revisar'} / ${number(r.max)} puntos. ${r.help}`), 'Mostrad la relación entre propósito, actividad, ODS y riesgos. Acompañad cada compromiso de una actuación y una evidencia comprobable.'])
-    });
-
-    list.push({
-      title: '¿Regaríais un parque con esta agua?', chapter: 'Conversación y cierre · 1:30', theme: 'dark',
+      title: '¿Regaríais un parque con esta agua?', chapter: 'Conversación y cierre · 2:00', theme: 'dark',
       body: `<div class="deck-closing"><span class="deck-closing-symbol" aria-hidden="true">✳</span><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">¿Regaríais un parque<br><em>con agua regenerada?</em></h2><p class="deck-subtitle">Si se comprueba que cumple los controles<br>para ese uso, ¿qué os gustaría saber antes?</p><div class="deck-closing-team"><span>${esc(state.company)}</span><span>${esc(state.team)}</span><span>${esc(state.course)}</span></div><button class="deck-return" data-deck-return>Volver a la web <span aria-hidden="true">↗</span></button></div>`,
-      notes: paragraphs(['Tiempo orientativo: 1 minuto y 30 segundos. La suma del recorrido es de unos 15 minutos, incluida esta conversación.', 'Preguntad al grupo si regaría un parque con esta agua y pedid una razón o una duda. Explicad que la confianza debe apoyarse en controles adecuados para el uso, no en prometer seguridad absoluta.', 'Cerrad con el lema: cuidar el agua para cuidar a las personas. El siguiente paso sería estudiar un piloto municipal.', 'Dejad espacio a preguntas del profesorado y del grupo. Si no disponéis de datos, explicad qué información necesitaríais para responder con rigor.', 'Fuentes: rúbrica facilitada, Agenda 2030 de Naciones Unidas y programa Zinkers de Fundación Repsol. Proyecto educativo independiente.'])
+      notes: paragraphs(['Tiempo orientativo: 2 minutos. La suma del recorrido es de unos 15 minutos, incluida esta conversación.', 'Preguntad al grupo si regaría un parque con esta agua y pedid una razón o una duda. Explicad que la confianza debe apoyarse en controles adecuados para el uso, no en prometer seguridad absoluta.', 'Cerrad con el lema: cuidar el agua para cuidar a las personas. El siguiente paso sería estudiar un piloto municipal.', 'Dejad espacio a preguntas del profesorado y del grupo. Si no disponéis de datos, explicad qué información necesitaríais para responder con rigor.', 'Fuentes: Agenda 2030 de Naciones Unidas y programa Zinkers de Fundación Repsol. Proyecto educativo independiente.'])
     });
     return list;
   }

@@ -1,82 +1,59 @@
-# Repte Som Professionals · Som Sostenibles
+# Hidrogenesis · Repte Som Professionals
 
-Web interactiva del proyecto educativo Zinkers FP · Som Sostenibles, con la propuesta de empresa **Hidrogota**: regeneración de aguas residuales, principalmente urbanas, para riego y otros usos no potables autorizados.
+Proyecto educativo sobre regeneración de aguas residuales para riego y otros usos no potables autorizados. Conserva la portada del proyecto y amplía cada apartado en una página propia, con explicaciones sencillas.
 
 ## Abrir la web
 
-Abre `index.html` en un navegador o utiliza el servidor local con Node.js:
+Abre `index.html` o ejecuta `node preview.mjs` y visita http://127.0.0.1:4173. No hay dependencias ni compilación.
 
-```sh
-node preview.mjs
-```
-
-Visita http://127.0.0.1:4173. No se necesitan instalaciones adicionales ni compilación.
-
-## Archivos
+## Páginas y archivos
 
 | Archivo | Contenido |
 | --- | --- |
-| `index.html` | Estructura y secciones de la web |
-| `styles.css` | Diseño adaptable y animaciones |
-| `app.js` | Datos, edición, ODS, filtros, rúbrica y descarga |
-| `presentation.css` | Diseño de las diapositivas y los controles de exposición |
-| `presentation.js` | Modo presentación, navegación, guion, índice y temporizador |
-| `preview.mjs` | Servidor de vista previa local |
+| `index.html` | Inicio, resumen interactivo, editor y presentación |
+| `proposito.html` | Las cuatro preguntas, grupos de interés, misión y modelo de servicio |
+| `proceso.html` | Tratamiento paso a paso, destinos, piloto y preguntas frecuentes |
+| `ods-asg.html` | ODS prioritarios, criterios ASG y explorador de los 17 objetivos |
+| `riesgos.html` | Matriz filtrable, respuesta ante incidencias y seguimiento |
+| `project.js` | Datos compartidos y recuperación de respuestas guardadas |
+| `app.js` | Interacciones del inicio, edición, descarga e impresión |
+| `matrix.js` | Filtros y tarjetas de riesgos compartidos |
+| `details.js` | Contenido dinámico y navegación de las páginas interiores |
+| `styles.css`, `details.css` | Diseño del inicio y de las páginas interiores |
+| `presentation.js`, `presentation.css` | Presentación panorámica y controles |
+| `preview.mjs` | Servidor local |
 
-## Funcionalidades
+## Presentación
 
-- Identidad visual de Hidrogota en azul agua y verde menta, con ilustración SVG de una gota.
-- Proceso simplificado de separación, tratamiento, regeneración y control; clientes municipales y fase agrícola por validar.
-- Cuatro preguntas sobre el propósito empresarial, organizadas en pestañas accesibles.
-- Síntesis del propósito y la misión de la empresa.
-- Los 17 ODS seleccionables y cuatro objetivos prioritarios justificados (6, 12, 11 y 2), con el ODS 9 como conexión complementaria.
-- Módulos ambientales, sociales y de gobernanza con acciones e indicadores.
-- Matriz de ocho riesgos y oportunidades con filtros combinados por ASG y ODS.
-- Autoevaluación basada en los cinco criterios visibles de la rúbrica facilitada: máximo conjunto de 8,5 puntos.
-- Editor del nombre de empresa, equipo, curso, respuestas y síntesis.
-- Guardado en el navegador mediante `localStorage`, sin sincronización entre dispositivos.
-- Descarga de un dossier Markdown e impresión del proyecto completo.
-- Adaptación a móvil y escritorio, navegación por teclado y respeto de la preferencia de movimiento reducido.
-- Presentación de 15 diapositivas con pantalla completa, índice, temporizador y guion para una exposición de unos 15 minutos.
+14 diapositivas con transiciones horizontales, índice, temporizador y guion orientativo para unos 15 minutos. El lienzo 16:9 se escala a la ventana sin scroll. El navegador debe permitir la pantalla completa para activarla con el botón o la tecla F.
 
-## Exponer el proyecto
+- Flechas, Re Pág / Av Pág: navegar.
+- Inicio / Fin: primera o última diapositiva.
+- N: mostrar el guion, que será visible en la pantalla compartida.
+- G: índice.
+- F: pantalla completa.
+- Escape: cerrar el índice o volver al inicio.
 
-Pulsa **Presentar proyecto** en la portada o **Presentar** en el menú. Se solicita pantalla completa si el navegador lo permite. El lienzo panorámico 16:9 se escala automáticamente para aprovechar la ventana sin recortar el contenido. Las diapositivas se desplazan horizontalmente y sus elementos entran de forma escalonada. Los controles se ocultan tras unos segundos y reaparecen al mover el puntero o usar el teclado.
+El enlace `index.html#presentacion/13` abre los indicadores. Las unidades y sus descripciones disponen de columnas independientes para evitar solapamientos. La evaluación académica se ha retirado del sitio, las diapositivas y la descarga.
 
-Las respuestas guardadas en el editor se incorporan al abrir la presentación. Las diapositivas muestran extractos legibles y el guion conserva el texto completo.
+## Edición y guardado
 
-| Control | Acción |
-| --- | --- |
-| Flechas izquierda y derecha | Diapositiva anterior o siguiente |
-| Re Pág / Av Pág | Diapositiva anterior o siguiente |
-| Espacio | Siguiente cuando el foco está en la diapositiva |
-| Inicio / Fin | Primera o última diapositiva |
-| N | Mostrar u ocultar el guion de apoyo |
-| G | Abrir o cerrar el índice |
-| F | Activar o salir de pantalla completa, si el navegador lo permite |
-| Escape | Cerrar el índice o volver a la web |
+El editor del inicio permite modificar empresa, equipo, curso, las cuatro respuestas y la misión. Las páginas interiores y las diapositivas usan los mismos datos.
 
-El guion es visible para quienes ven la pantalla cuando se despliega. El temporizador comienza al abrir la presentación y no cambia las diapositivas automáticamente. Se puede enlazar a una diapositiva con `#presentacion/7`, por ejemplo. En móvil se puede navegar con los botones o con un gesto horizontal sobre la diapositiva; la vista horizontal permite aprovechar mejor el lienzo. El contenido de las diapositivas se adapta por escala, sin scroll vertical. La preferencia de movimiento reducido desactiva las animaciones.
+Los cambios se guardan en este navegador bajo `hidrogenesis-project-v3`. Si existe una versión anterior del proyecto del agua, se conservan sus respuestas y datos de equipo y se actualiza el nombre anterior. No se borran las claves antiguas. Si solo existe el primer ejemplo de mobiliario, se recuperan únicamente equipo y curso.
 
-## Adaptar el caso
+La descarga Markdown incluye propósito, misión, proceso, ODS, ASG y matriz. La impresión del inicio despliega los contenidos completos. El guardado local no sincroniza dispositivos.
 
-El botón **Editar proyecto** permite cambiar las respuestas y los datos del equipo. Para adaptar el análisis a otra actividad, modifica también las estructuras `priority`, `secondary`, `asg` y `matrix` de `app.js`, y los textos de presentación de `index.html`.
+## Publicación
 
-Las respuestas de Hidrogota se guardan en `hidrogota-project-v2` y prevalecen sobre `defaults`. Al abrir la nueva versión por primera vez se recuperan el equipo y el curso del ejemplo anterior, si existían. Los textos, la misión y la puntuación empiezan con el nuevo proyecto; el almacenamiento antiguo permanece intacto en `som-sostenibles-project-v1` para no borrar las ediciones previas.
+Alojar juntos todos los archivos HTML, CSS y JavaScript. Las rutas interiores son archivos HTML reales y se pueden abrir directamente o recargar. En GitHub Pages, seleccionar la rama y la raíz desde la configuración del repositorio; subir el código no activa el alojamiento automáticamente.
 
-La rúbrica de la imagen repite los descriptores de ODS en la fila ASG. Se conservan sus niveles y puntuaciones, con una nota aclaratoria. La comprobación de riesgos es complementaria y no añade puntos. La autoevaluación no sustituye la valoración del profesorado.
+Las fuentes DM Sans y Manrope usan Google Fonts con alternativas del sistema. La ilustración SVG está incluida en el HTML. Se respeta la preferencia de movimiento reducido.
 
-## Publicación estática
-
-Los archivos están en la raíz y pueden alojarse en un servidor estático. Si se utiliza GitHub Pages, se puede seleccionar la rama `main` y la carpeta raíz desde la configuración del repositorio. La subida del código no activa ese servicio automáticamente.
-
-Las tipografías DM Sans y Manrope se cargan desde Google Fonts; se emplean fuentes del sistema si no están disponibles. La ilustración SVG está incluida en el HTML. Los símbolos de los ODS son una interpretación gráfica propia.
-
-## Referencias
+## Fuentes
 
 - [Agenda 2030 · Naciones Unidas](https://sdgs.un.org/es/goals)
-- [Zinkers · Fundación Repsol](https://zinkers.fundacionrepsol.com)
 - [Reutilización de aguas tratadas · MITECO](https://www.miteco.gob.es/es/agua/temas/concesiones-y-autorizaciones/reutilizacion-aguas-depuradas.html)
-- Rúbrica parcial: imagen facilitada para el proyecto.
+- [Zinkers · Fundación Repsol](https://zinkers.fundacionrepsol.com)
 
-Proyecto educativo independiente basado en la idea facilitada por el equipo. Hidrogota, su piloto, sus acuerdos, instalaciones e indicadores se presentan como propuestas, sin resultados operativos acreditados. No se propone agua para beber. El origen ganadero requiere una evaluación específica y no se equipara automáticamente al urbano.
+Propuesta educativa independiente, sin instalaciones, contratos ni resultados operativos acreditados. No se propone agua para beber. La solución real depende del origen del agua, del destino y de las condiciones aplicables. El origen ganadero requiere un estudio específico.
