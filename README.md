@@ -39,7 +39,9 @@ Visita http://127.0.0.1:4173. No se necesitan instalaciones adicionales ni compi
 
 ## Exponer el proyecto
 
-Pulsa **Presentar proyecto** en la portada o **Presentar** en el menú. Las respuestas guardadas en el editor se incorporan al abrir la presentación. Las diapositivas muestran extractos legibles y el guion conserva el texto completo.
+Pulsa **Presentar proyecto** en la portada o **Presentar** en el menú. Se solicita pantalla completa si el navegador lo permite. El lienzo panorámico 16:9 se escala automáticamente para aprovechar la ventana sin recortar el contenido. Las diapositivas se desplazan horizontalmente y sus elementos entran de forma escalonada. Los controles se ocultan tras unos segundos y reaparecen al mover el puntero o usar el teclado.
+
+Las respuestas guardadas en el editor se incorporan al abrir la presentación. Las diapositivas muestran extractos legibles y el guion conserva el texto completo.
 
 | Control | Acción |
 | --- | --- |
@@ -52,7 +54,7 @@ Pulsa **Presentar proyecto** en la portada o **Presentar** en el menú. Las resp
 | F | Activar o salir de pantalla completa, si el navegador lo permite |
 | Escape | Cerrar el índice o volver a la web |
 
-El guion es visible para quienes ven la pantalla cuando se despliega. El temporizador comienza al abrir la presentación y no cambia las diapositivas automáticamente. Se puede enlazar a una diapositiva con `#presentacion/7`, por ejemplo. En móvil se puede navegar con los botones o con un gesto horizontal sobre la diapositiva. El contenido permite desplazamiento vertical cuando la pantalla es pequeña o se amplía el texto.
+El guion es visible para quienes ven la pantalla cuando se despliega. El temporizador comienza al abrir la presentación y no cambia las diapositivas automáticamente. Se puede enlazar a una diapositiva con `#presentacion/7`, por ejemplo. En móvil se puede navegar con los botones o con un gesto horizontal sobre la diapositiva; la vista horizontal permite aprovechar mejor el lienzo. El contenido de las diapositivas se adapta por escala, sin scroll vertical. La preferencia de movimiento reducido desactiva las animaciones.
 
 ## Adaptar el caso
 

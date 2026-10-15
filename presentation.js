@@ -3,6 +3,7 @@
 
   const presentation = document.getElementById('presentation');
   const stage = document.getElementById('deck-stage');
+  const canvas = document.getElementById('deck-canvas');
   const notes = document.getElementById('deck-notes');
   const indexPanel = document.getElementById('deck-index');
   const notesToggle = document.getElementById('deck-notes-toggle');
@@ -17,6 +18,34 @@
   let timer = null;
   let startedAt = 0;
   let touchStart = null;
+  let transitionTimer = null;
+  let controlsTimer = null;
+  let messageTimer = null;
+
+  function fitCanvas() {
+    if (!presentation.open) return;
+    const scale = Math.max(0.05, Math.min(stage.clientWidth / 1280, stage.clientHeight / 720));
+    canvas.style.setProperty('--deck-scale', String(scale));
+    const content = canvas.querySelector('.deck-slide.is-active .deck-slide-inner');
+    if (content) content.style.setProperty('--deck-content-scale', String(Math.min(1, 580 / Math.max(1, content.offsetHeight))));
+  }
+
+  function revealControls() {
+    if (!presentation.open) return;
+    presentation.classList.add('controls-visible');
+    clearTimeout(controlsTimer);
+    controlsTimer = setTimeout(() => {
+      if (notes.hidden && indexPanel.hidden && !presentation.querySelector('.deck-header:focus-within,.deck-footer:focus-within')) presentation.classList.remove('controls-visible');
+    }, 2500);
+  }
+
+  function showMessage(message) {
+    const element = document.getElementById('deck-message');
+    element.textContent = message;
+    element.classList.add('visible');
+    clearTimeout(messageTimer);
+    messageTimer = setTimeout(() => element.classList.remove('visible'), 4500);
+  }
 
   const short = (text, limit = 190) => {
     const value = String(text).trim();
@@ -121,10 +150,35 @@
   }
 
   function showSlide(nextIndex, focus = true) {
-    slideIndex = Math.max(0, Math.min(slides.length - 1, nextIndex));
+    const previousIndex = slideIndex;
+    const next = Math.max(0, Math.min(slides.length - 1, nextIndex));
+    const outgoing = canvas.querySelector('.deck-slide.is-active');
+    if (outgoing && next === previousIndex) return;
+    slideIndex = next;
     const slide = slides[slideIndex];
-    stage.innerHTML = `<article class="deck-slide deck-theme-${slide.theme}" role="group" aria-roledescription="diapositiva" aria-label="${slideIndex + 1} de ${slides.length}"><div class="deck-slide-inner">${slide.body}</div></article>`;
-    stage.scrollTop = 0;
+    clearTimeout(transitionTimer);
+    canvas.querySelectorAll('.deck-slide:not(.is-active)').forEach(element => element.remove());
+    if (outgoing) {
+      outgoing.classList.remove('is-active', 'is-entering', 'from-right', 'from-left');
+      outgoing.classList.add('is-leaving', slideIndex > previousIndex ? 'to-left' : 'to-right');
+      outgoing.setAttribute('aria-hidden', 'true');
+      outgoing.inert = true;
+      const oldHeading = outgoing.querySelector('#deck-slide-title');
+      if (oldHeading) oldHeading.removeAttribute('id');
+    }
+    const incoming = document.createElement('article');
+    incoming.className = `deck-slide deck-theme-${slide.theme} is-active is-entering ${!outgoing || slideIndex > previousIndex ? 'from-right' : 'from-left'}`;
+    incoming.setAttribute('role', 'group');
+    incoming.setAttribute('aria-roledescription', 'diapositiva');
+    incoming.setAttribute('aria-label', `${slideIndex + 1} de ${slides.length}`);
+    incoming.innerHTML = `<div class="deck-slide-inner">${slide.body}</div>`;
+    canvas.append(incoming);
+    stage.dataset.theme = slide.theme;
+    fitCanvas();
+    transitionTimer = setTimeout(() => {
+      if (outgoing) outgoing.remove();
+      incoming.classList.remove('is-entering', 'from-right', 'from-left');
+    }, 1150);
     document.getElementById('deck-notes-title').textContent = slide.title;
     document.getElementById('deck-notes-content').innerHTML = slide.notes;
     notes.scrollTop = 0;
@@ -136,6 +190,7 @@
     history.replaceState(null, '', `#presentacion/${slideIndex + 1}`);
     renderIndex();
     if (focus) document.getElementById('deck-slide-title').focus({preventScroll:true});
+    revealControls();
   }
 
   function toggleNotes() {
@@ -144,6 +199,8 @@
     presentation.querySelector('.deck-body').classList.toggle('with-notes', visible);
     notesToggle.setAttribute('aria-expanded', String(visible));
     notesToggle.setAttribute('aria-label', visible ? 'Ocultar guion de apoyo' : 'Mostrar guion de apoyo');
+    fitCanvas();
+    revealControls();
   }
 
   function toggleIndex(force) {
@@ -151,15 +208,16 @@
     indexPanel.hidden = !visible;
     indexToggle.setAttribute('aria-expanded', String(visible));
     if (visible) indexPanel.querySelector('[aria-current="step"]').focus({preventScroll:true});
+    revealControls();
   }
 
   async function toggleFullscreen() {
     try {
       if (document.fullscreenElement === presentation) await document.exitFullscreen();
-      else if (presentation.requestFullscreen) await presentation.requestFullscreen();
-      else toast('Este navegador no admite pantalla completa. La presentación ya ocupa toda la ventana.');
+      else if (presentation.requestFullscreen && document.fullscreenEnabled) await presentation.requestFullscreen();
+      else showMessage('Tu navegador no permite activar la pantalla completa en esta ventana.');
     } catch {
-      toast('No se ha podido activar la pantalla completa. Puedes seguir presentando en esta ventana.');
+      showMessage('La presentación ocupa la ventana. El navegador no ha permitido activar la pantalla completa.');
     }
   }
 
@@ -175,7 +233,9 @@
       notesToggle.setAttribute('aria-label', 'Mostrar guion de apoyo');
       presentation.querySelector('.deck-body').classList.remove('with-notes');
       toggleIndex(false);
+      canvas.replaceChildren();
       presentation.showModal();
+      presentation.classList.add('controls-visible');
       document.body.classList.add('presenting');
       document.title = state.company + ' · Presentación | Som Sostenibles';
       document.getElementById('presentation-name').textContent = state.company + ' · Repte Som Professionals';
@@ -194,6 +254,11 @@
 
   presentation.addEventListener('close', () => {
     clearInterval(timer);
+    clearTimeout(transitionTimer);
+    clearTimeout(controlsTimer);
+    clearTimeout(messageTimer);
+    canvas.replaceChildren();
+    document.getElementById('deck-message').classList.remove('visible');
     timer = null;
     document.body.classList.remove('presenting');
     document.title = returnTitle;
@@ -205,6 +270,7 @@
   document.querySelectorAll('.presentation-trigger').forEach(button => button.addEventListener('click', event => {
     if (document.getElementById('navigation').classList.contains('open')) document.querySelector('.menu-toggle').click();
     openPresentation(0, event.currentTarget);
+    if (presentation.open && presentation.requestFullscreen && document.fullscreenEnabled && !document.fullscreenElement) toggleFullscreen();
   }));
   document.getElementById('deck-next').addEventListener('click', () => showSlide(slideIndex + 1));
   document.getElementById('deck-previous').addEventListener('click', () => showSlide(slideIndex - 1));
@@ -237,7 +303,14 @@
     const active = document.fullscreenElement === presentation;
     fullscreenButton.setAttribute('aria-label', active ? 'Salir de pantalla completa' : 'Activar pantalla completa');
     fullscreenButton.title = active ? 'Salir de pantalla completa (F)' : 'Pantalla completa (F)';
+    fitCanvas();
+    revealControls();
   });
+  presentation.addEventListener('pointermove', revealControls, {passive:true});
+  presentation.addEventListener('pointerdown', revealControls, {passive:true});
+  presentation.addEventListener('focusin', revealControls);
+  window.addEventListener('resize', fitCanvas);
+  if ('ResizeObserver' in window) new ResizeObserver(fitCanvas).observe(stage);
   document.addEventListener('keydown', event => {
     if (!presentation.open || event.ctrlKey || event.metaKey || event.altKey || event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
     const key = event.key.toLowerCase();

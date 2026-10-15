@@ -8,3 +8,120 @@
 @media(prefers-reduced-motion:reduce){.deck-slide,.deck-orbit,.deck-index{animation:none!important}.deck-progress span,.deck-tools button,.deck-footer button{transition:none!important}}
 @media print{#presentation[open]{display:none!important}.nav-present,.presentation-trigger{display:none!important}}
 @keyframes deck-appear{from{opacity:0}to{opacity:1}}
+#presentation[open]{display:block;background:#163d32}
+#presentation .deck-header{position:absolute;top:0;left:0;right:0;height:60px;z-index:12;background:rgba(251,252,248,.96);backdrop-filter:blur(14px);transition:opacity .3s,transform .3s;transform:translateY(-100%);opacity:0;pointer-events:none}
+#presentation .deck-footer{position:absolute;bottom:3px;left:0;right:0;height:65px;z-index:12;background:rgba(251,252,248,.96);backdrop-filter:blur(14px);transition:opacity .3s,transform .3s;transform:translateY(100%);opacity:0;pointer-events:none}
+#presentation.controls-visible .deck-header,#presentation.controls-visible .deck-footer,#presentation .deck-header:focus-within,#presentation .deck-footer:focus-within{opacity:1;transform:none;pointer-events:auto}
+#presentation .deck-body{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);min-height:0}
+#presentation .deck-body.with-notes{grid-template-columns:minmax(0,1fr) 320px;grid-template-rows:minmax(0,1fr)}
+#presentation .deck-stage{position:relative;width:100%;height:100%;min-height:0;overflow:hidden;touch-action:pan-y;background:#f5f7f0;transition:background .6s}
+#presentation .deck-stage[data-theme=dark]{background:#1d493b}
+#presentation .deck-stage[data-theme=dark]:before{opacity:0}
+.deck-canvas{--deck-scale:1;width:1280px;height:720px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(var(--deck-scale));transform-origin:center;overflow:hidden;isolation:isolate}
+.deck-canvas .deck-slide{position:absolute;inset:0;width:1280px;height:720px;min-height:720px;max-height:720px;padding:65px 80px 75px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;animation:none;backface-visibility:hidden;will-change:transform,opacity}
+.deck-canvas .deck-slide.is-active{z-index:2}
+.deck-canvas .deck-slide.is-leaving{z-index:1;pointer-events:none}
+.deck-canvas .deck-slide-inner{width:100%;max-width:none;margin-inline:auto}
+.deck-canvas .deck-kicker{font-size:10px;letter-spacing:2px;line-height:1.6;margin-bottom:18px;gap:11px}
+.deck-canvas .deck-heading{font-size:46px;font-weight:600;letter-spacing:-1.8px;line-height:1.15;max-width:none}
+.deck-canvas .deck-subtitle{font-size:18px;line-height:1.7;margin-top:15px;max-width:900px}
+.deck-canvas .deck-section-heading{margin-bottom:27px}
+.deck-canvas .deck-cover-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center}
+.deck-canvas .deck-cover-title{font-size:105px;letter-spacing:-6px;line-height:.98;margin:23px 0 28px}
+.deck-canvas .deck-cover-title>span{font-size:20px;letter-spacing:0;line-height:1.5;margin-bottom:24px}
+.deck-canvas .deck-cover-description{font-size:21px;line-height:1.65;max-width:580px}
+.deck-canvas .deck-company{margin-top:27px;padding:8px 18px 8px 9px;display:inline-flex;flex-wrap:nowrap;gap:12px}
+.deck-canvas .deck-company strong{font-size:14px}
+.deck-canvas .deck-company>span{width:29px;height:29px;font-size:19px}
+.deck-canvas .deck-company small{font-size:8px;letter-spacing:1px;padding-left:12px}
+.deck-canvas .deck-cover-art{display:grid;position:relative;right:auto;bottom:auto;max-width:440px;min-width:0;width:100%;aspect-ratio:1;justify-self:center;opacity:1;z-index:auto;pointer-events:auto}
+.deck-canvas .deck-cover-art .deck-art-label{display:block;font-size:8px;letter-spacing:2px}
+.deck-canvas .deck-question-layout{display:grid;grid-template-columns:1fr 1fr;gap:62px;align-items:center}
+.deck-canvas .deck-big-number{font-size:110px;letter-spacing:-6px;margin-bottom:22px;line-height:1}
+.deck-canvas .deck-question-heading .deck-heading{font-size:52px;max-width:520px;letter-spacing:-2px;line-height:1.15}
+.deck-canvas .deck-question-heading .deck-pill{margin-top:25px;font-size:10px}
+.deck-canvas .deck-quote{font-size:25px;line-height:1.55;letter-spacing:-.6px;padding-left:25px;margin:0 0 27px}
+.deck-canvas .deck-idea-list{gap:18px}
+.deck-canvas .deck-idea-list li{font-size:18px;line-height:1.65;gap:13px}
+.deck-canvas .deck-excerpt-note{font-size:9px;line-height:1.6;margin-top:25px}
+.deck-canvas .deck-mission{max-width:1120px;text-align:left;margin:auto}
+.deck-canvas .deck-mission .deck-heading{font-size:46px;max-width:1000px}
+.deck-canvas .deck-mission-quote{font-size:30px;line-height:1.5;letter-spacing:-.6px;margin-top:29px}
+.deck-canvas .deck-mission .deck-label-row{display:flex;gap:24px;font-size:10px;letter-spacing:1px;line-height:1.7;margin-top:26px;padding-top:18px}
+.deck-canvas .deck-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.deck-canvas .deck-card{padding:25px;border-radius:15px;min-height:0;display:block;grid-template-columns:none;gap:0}
+.deck-canvas .deck-card h3{font-size:24px;line-height:1.3;letter-spacing:-.5px;margin-bottom:12px}
+.deck-canvas .deck-card p{font-size:18px;line-height:1.65}
+.deck-canvas .deck-card .deck-card-tag{font-size:8px;line-height:1.6;letter-spacing:1.1px;margin-bottom:8px}
+.deck-canvas .deck-ods-card{display:grid;grid-template-columns:54px minmax(0,1fr);gap:17px;align-items:start;min-height:176px}
+.deck-canvas .deck-ods-number{width:54px;height:57px;font-size:29px;border-radius:11px}
+.deck-canvas .deck-ods-card h3{font-size:23px;line-height:1.3;margin-bottom:11px}
+.deck-canvas .deck-ods-card p{font-size:17px;line-height:1.6}
+.deck-canvas .deck-asg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.deck-canvas .deck-asg-card{display:block;padding:27px 24px;min-height:350px}
+.deck-canvas .deck-asg-letter{display:block;font-size:54px;letter-spacing:-3px;line-height:1;margin:0 0 23px}
+.deck-canvas .deck-asg-card h3{font-size:25px;margin-bottom:14px}
+.deck-canvas .deck-asg-card>p{font-size:17px;line-height:1.7}
+.deck-canvas .deck-asg-action{margin-top:22px;padding-top:17px}
+.deck-canvas .deck-asg-action strong{font-size:8px;line-height:1.6;margin-bottom:10px;letter-spacing:1.2px}
+.deck-canvas .deck-asg-action p{font-size:15px;line-height:1.7}
+.deck-canvas .deck-risk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:23px}
+.deck-canvas .deck-risk-card{padding:29px;min-height:330px}
+.deck-canvas .deck-risk-card h3{font-size:29px;line-height:1.25;margin-bottom:17px}
+.deck-canvas .deck-risk-card>p{font-size:19px;line-height:1.65}
+.deck-canvas .deck-risk-label{font-size:9px;letter-spacing:2px;line-height:1.4;margin-bottom:20px;gap:11px}
+.deck-canvas .deck-risk-label>span{font-size:26px}
+.deck-canvas .deck-risk-response{padding-top:17px;margin-top:21px}
+.deck-canvas .deck-risk-response>span{font-size:8px;line-height:1.6;letter-spacing:1.5px;margin-bottom:9px}
+.deck-canvas .deck-risk-response p{font-size:16px;line-height:1.65}
+.deck-canvas .deck-risk-bottom{margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.deck-canvas .deck-risk-bottom>span:last-child{font-size:10px;line-height:1.6;text-align:right}
+.deck-canvas .deck-pill{font-size:9px;line-height:1.6;padding:5px 11px;letter-spacing:.5px}
+.deck-canvas .deck-metric-card{display:grid;grid-template-columns:90px minmax(0,1fr);gap:22px;align-items:center;min-height:155px}
+.deck-canvas .deck-metric-unit{font-size:44px;letter-spacing:-2px;line-height:1}
+.deck-canvas .deck-metric-card h3{font-size:23px}
+.deck-canvas .deck-metric-card p{font-size:16px;line-height:1.65}
+.deck-canvas .deck-metric-note{font-size:11px;line-height:1.7;margin-top:22px}
+.deck-canvas .deck-rubric-layout{display:grid;grid-template-columns:1.35fr .8fr;gap:65px;align-items:center}
+.deck-canvas .deck-rubric-list{gap:11px}
+.deck-canvas .deck-rubric-item{font-size:19px;line-height:1.5;padding:15px 20px;gap:20px}
+.deck-canvas .deck-rubric-item span:last-child{font-size:14px}
+.deck-canvas .deck-rubric-score{padding:32px 27px}
+.deck-canvas .deck-rubric-score>span{font-size:9px;letter-spacing:1.5px}
+.deck-canvas .deck-rubric-score strong{font-size:95px;letter-spacing:-6px;line-height:1.1;margin:17px 0 9px}
+.deck-canvas .deck-rubric-score>p{font-size:15px}
+.deck-canvas .deck-rubric-score>small{font-size:11px;line-height:1.8;margin:19px auto 0;max-width:280px}
+.deck-canvas .deck-closing{text-align:center}
+.deck-canvas .deck-closing-symbol{font-size:85px;line-height:1;margin-bottom:25px}
+.deck-canvas .deck-closing .deck-heading{font-size:75px;line-height:1.12;letter-spacing:-3px}
+.deck-canvas .deck-closing .deck-subtitle{font-size:22px;line-height:1.65;max-width:780px;margin:24px auto 0}
+.deck-canvas .deck-closing-team{display:flex;flex-direction:row;justify-content:center;flex-wrap:wrap;font-size:12px;line-height:1.6;gap:10px 24px;margin-top:28px}
+.deck-canvas .deck-closing .deck-return{font-size:13px;gap:25px;padding:12px 20px;margin-top:27px}
+#presentation .deck-notes{padding:84px 24px 88px;border-left:1px solid #dce5d2;overflow:auto;min-height:0;border-top:0}
+#presentation .deck-notes .deck-notes-hint{display:block}
+#presentation .deck-progress{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:15}
+#presentation .deck-index{top:60px;bottom:68px;z-index:14}
+.deck-orientation-hint{display:none;position:absolute;bottom:95px;left:15px;right:15px;text-align:center;color:#8ba07b;font-size:10px;letter-spacing:.3px;pointer-events:none}
+.deck-stage[data-theme=dark] .deck-orientation-hint{color:#b2c99b}
+.deck-message{position:absolute;bottom:90px;left:50%;transform:translate(-50%,12px);max-width:calc(100% - 40px);background:#e6efda;color:#2d5137;box-shadow:0 8px 35px #173d3430;border-radius:10px;padding:13px 20px;font-size:12px;line-height:1.7;z-index:16;pointer-events:none;opacity:0;transition:opacity .2s,transform .2s}
+.deck-message.visible{opacity:1;transform:translate(-50%,0)}
+.deck-canvas .is-entering.from-right{animation:deck-slide-in-right .65s cubic-bezier(.22,.7,.15,1) both}
+.deck-canvas .is-entering.from-left{animation:deck-slide-in-left .65s cubic-bezier(.22,.7,.15,1) both}
+.deck-canvas .is-leaving.to-left{animation:deck-slide-out-left .65s cubic-bezier(.22,.7,.15,1) both}
+.deck-canvas .is-leaving.to-right{animation:deck-slide-out-right .65s cubic-bezier(.22,.7,.15,1) both}
+.deck-canvas .is-entering .deck-kicker{animation:deck-item-in .55s .13s both}
+.deck-canvas .is-entering :is(.deck-heading,.deck-cover-title,.deck-big-number){animation:deck-item-in .6s .2s both}
+.deck-canvas .is-entering :is(.deck-quote,.deck-mission-quote,.deck-cover-description,.deck-cover-art,.deck-card,.deck-rubric-layout){animation:deck-item-in .65s .27s both}
+.deck-canvas .is-entering .deck-card:nth-child(2){animation-delay:.33s}
+.deck-canvas .is-entering .deck-card:nth-child(3){animation-delay:.39s}
+.deck-canvas .is-entering .deck-card:nth-child(4){animation-delay:.45s}
+@keyframes deck-slide-in-right{from{opacity:.3;transform:translate3d(100%,0,0)}to{opacity:1;transform:none}}
+@keyframes deck-slide-in-left{from{opacity:.3;transform:translate3d(-100%,0,0)}to{opacity:1;transform:none}}
+@keyframes deck-slide-out-left{from{opacity:1;transform:none}to{opacity:0;transform:translate3d(-35%,0,0)}}
+@keyframes deck-slide-out-right{from{opacity:1;transform:none}to{opacity:0;transform:translate3d(35%,0,0)}}
+@keyframes deck-item-in{from{opacity:0;transform:translate3d(0,24px,0) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:640px){#presentation .deck-header{padding-inline:17px}#presentation .deck-footer{padding-inline:15px}#presentation .deck-body.with-notes{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) 37%}#presentation .deck-notes{padding:18px 20px 82px;border-left:0;border-top:1px solid #dce5d2}.deck-message{font-size:11px;width:max-content;bottom:86px}}
+@media(max-width:640px) and (orientation:portrait){.deck-orientation-hint{display:block}}
+@media(prefers-reduced-motion:reduce){#presentation .deck-slide,#presentation .deck-slide *,#presentation .deck-header,#presentation .deck-footer,#presentation .deck-stage,.deck-message{animation:none!important;transition:none!important}.deck-canvas .deck-slide.is-leaving{display:none!important}}
+@media print{#presentation[open]{display:none!important}}
+.deck-canvas .deck-slide-inner{transform:scale(var(--deck-content-scale,1));transform-origin:center}.deck-canvas .deck-idea-list li{overflow-wrap:anywhere}
