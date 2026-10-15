@@ -19,6 +19,8 @@ Visita http://127.0.0.1:4173. No se necesitan instalaciones adicionales ni compi
 | `index.html` | Estructura y secciones de la web |
 | `styles.css` | Diseño adaptable y animaciones |
 | `app.js` | Datos, edición, ODS, filtros, rúbrica y descarga |
+| `presentation.css` | Diseño de las diapositivas y los controles de exposición |
+| `presentation.js` | Modo presentación, navegación, guion, índice y temporizador |
 | `preview.mjs` | Servidor de vista previa local |
 
 ## Funcionalidades
@@ -33,6 +35,24 @@ Visita http://127.0.0.1:4173. No se necesitan instalaciones adicionales ni compi
 - Guardado en el navegador mediante `localStorage`, sin sincronización entre dispositivos.
 - Descarga de un dossier Markdown e impresión del proyecto completo.
 - Adaptación a móvil y escritorio, navegación por teclado y respeto de la preferencia de movimiento reducido.
+- Presentación de 15 diapositivas con pantalla completa, índice, temporizador y guion de apoyo.
+
+## Exponer el proyecto
+
+Pulsa **Presentar proyecto** en la portada o **Presentar** en el menú. Las respuestas guardadas en el editor se incorporan al abrir la presentación. Las diapositivas muestran extractos legibles y el guion conserva el texto completo.
+
+| Control | Acción |
+| --- | --- |
+| Flechas izquierda y derecha | Diapositiva anterior o siguiente |
+| Re Pág / Av Pág | Diapositiva anterior o siguiente |
+| Espacio | Siguiente cuando el foco está en la diapositiva |
+| Inicio / Fin | Primera o última diapositiva |
+| N | Mostrar u ocultar el guion de apoyo |
+| G | Abrir o cerrar el índice |
+| F | Activar o salir de pantalla completa, si el navegador lo permite |
+| Escape | Cerrar el índice o volver a la web |
+
+El guion es visible para quienes ven la pantalla cuando se despliega. El temporizador comienza al abrir la presentación y no cambia las diapositivas automáticamente. Se puede enlazar a una diapositiva con `#presentacion/7`, por ejemplo. En móvil se puede navegar con los botones o con un gesto horizontal sobre la diapositiva. El contenido permite desplazamiento vertical cuando la pantalla es pequeña o se amplía el texto.
 
 ## Adaptar el caso
 

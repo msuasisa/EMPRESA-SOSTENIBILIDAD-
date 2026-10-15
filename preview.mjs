@@ -7,7 +7,9 @@ const root = fileURLToPath(new URL('./', import.meta.url));
 const files = new Map([
   ['/index.html', 'text/html; charset=utf-8'],
   ['/styles.css', 'text/css; charset=utf-8'],
-  ['/app.js', 'text/javascript; charset=utf-8']
+  ['/app.js', 'text/javascript; charset=utf-8'],
+  ['/presentation.css', 'text/css; charset=utf-8'],
+  ['/presentation.js', 'text/javascript; charset=utf-8']
 ]);
 
 http.createServer(async (req, res) => {
