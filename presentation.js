@@ -82,10 +82,13 @@
       notes: paragraphs(['Tiempo orientativo: 3 minutos. Recorred las cuatro preguntas en este orden y dedicad unos 45 segundos a cada una. Las tarjetas resumen las respuestas; el texto completo se conserva aquí.']) + questions.map((question, i) => `<p><strong>${i + 1}. ${esc(question.title)}</strong></p>` + paragraphs([state.answers[i], question.note])).join('')
     });
 
+    const missionBrief = state.mission === defaults.mission
+      ? 'Recuperar aguas usadas para regar parques y jardines, con controles de calidad. No es agua para beber.'
+      : short(sentences(state.mission).slice(0, 2).join(' ') || state.mission, 220);
     list.push({
       title: 'Propósito y misión', chapter: 'Entregable 1 · 0:45', theme: 'dark',
-      body: `<div class="deck-mission"><div class="deck-kicker">ENTREGABLE 1 · NUESTRA BRÚJULA</div><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">Un propósito para decidir.<br><em>Una misión para actuar.</em></h2><p class="deck-mission-quote">${esc(short(state.mission, 600))}</p><div class="deck-label-row"><span>${esc(state.company)}</span><span>PROPÓSITO + MISIÓN</span><span>DEL PORQUÉ AL CÓMO</span></div></div>`,
-      notes: paragraphs([state.mission, 'Explicad qué necesidad atiende la empresa, a quién aporta valor y cómo se traduce ese propósito en su actividad diaria.'])
+      body: `<div class="deck-mission"><div class="deck-kicker">ENTREGABLE 1 · NUESTRO PROPÓSITO</div><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">Cuidar el agua.<br><em>Cuidar a las personas.</em></h2><p class="deck-mission-quote"><strong>Nuestra misión:</strong><br>${esc(missionBrief)}</p><div class="deck-label-row"><span>${esc(state.company)}</span><span>PROPÓSITO + MISIÓN</span></div></div>`,
+      notes: paragraphs(['Para explicarlo: queremos cuidar el agua y ayudar a las personas. Proponemos recuperar agua usada para regar parques y jardines, después de tratarla y comprobar su calidad. No proponemos agua para beber.', state.mission])
     });
 
     const goals = [6, 12, 11, 2];
@@ -95,9 +98,14 @@
       notes: paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. ODS 6 es el núcleo; ODS 12 explica el uso responsable del recurso; ODS 11 conecta con parques y ciudades; ODS 2 es una contribución agrícola por validar. ODS 9 complementa el proyecto mediante infraestructura, sensores y redes separadas.']) + goals.map(n => `<p><strong>ODS ${n} · ${esc(ods[n - 1][1])}</strong><br>${esc(priority[n].why)}<br><br>${esc(priority[n].action)}<br><br>${esc(priority[n].target)}</p>`).join('')
     });
 
+    const asgBrief = {
+      A: {body:'Aprovechar el agua y controlar la energía y los residuos.', action:'Medir consumos y revisar la calidad del agua.'},
+      S: {body:'Cuidar al equipo y explicar el proyecto a la comunidad.', action:'Formar al personal y escuchar las dudas.'},
+      G: {body:'Trabajar con permisos, controles y responsables claros.', action:'Registrar los controles y atender las incidencias.'}
+    };
     list.push({
       title: 'Criterios ASG', chapter: 'Actividad 2 · ASG · 1:15', theme: 'light',
-      body: titleBlock('DEL COMPROMISO A LA GESTIÓN', 'Tres miradas.<br><em>Una misma responsabilidad.</em>') + `<div class="deck-asg-grid">${asg.map(a => `<article class="deck-card deck-asg-card"><span class="deck-asg-letter" aria-hidden="true">${a.key}</span><h3>${esc(a.name)}</h3><p>${esc(a.body)}</p><div class="deck-asg-action"><strong>ACCIÓN PROPUESTA</strong><p>${esc(short(a.action, 160))}</p></div></article>`).join('')}</div>`,
+      body: titleBlock('CRITERIOS ASG · CÓMO TRABAJARÍAMOS', 'Cuidar el entorno.<br><em>Trabajar con responsabilidad.</em>') + `<div class="deck-asg-grid">${asg.map(a => {const brief=asgBrief[a.key] || a; return `<article class="deck-card deck-asg-card"><span class="deck-asg-letter" aria-hidden="true">${a.key}</span><h3>${esc(a.name)}</h3><p>${esc(brief.body)}</p><div class="deck-asg-action"><strong>ACCIÓN PROPUESTA</strong><p>${esc(brief.action)}</p></div></article>`;}).join('')}</div>`,
       notes: paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. Ambiental es cómo cuidamos el agua y gestionamos los impactos; social, cómo protegemos e informamos a las personas; gobernanza, quién responde y cómo se comprueba lo que hacemos.']) + asg.map(a => `<p><strong>${esc(a.name)}</strong><br>${esc(a.body)}<br><br>${esc(a.action)}<br><br>${esc(a.evidence)}</p>`).join('')
     });
 
