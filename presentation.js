@@ -77,10 +77,10 @@
     });
 
     const purposeBriefs = [
-      'Recuperar agua de excrementos humanos y animales para el riego.',
-      'Ser una empresa responsable, cercana y transparente.',
-      'Usar menos agua dulce y cuidar las zonas verdes.',
-      'Responder a la sequía y a la escasez de agua.'
+      'Recuperar agua de excrementos humanos y animales, tratarla y aprovecharla para el riego de parques y jardines.',
+      'Ser una empresa cercana, responsable y transparente, que genere confianza con información clara y controles de calidad.',
+      'Cuidar las zonas verdes y reducir el uso de agua dulce, ofreciendo una alternativa para el riego.',
+      'Responder a la sequía y a la escasez de agua, considerando los costes, los permisos y las necesidades locales.'
     ];
     list.push({
       title: 'Las cuatro preguntas del propósito', chapter: 'Actividad 1 · Propósito · 3:00', theme: 'light',
