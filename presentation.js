@@ -76,9 +76,15 @@
       notes:paragraphs(['Tiempo orientativo: 1 minuto y 30 segundos. No hacemos agua de la nada: recuperamos el agua que ya forma parte de las aguas residuales, principalmente urbanas de origen humano.', 'Primero se separan sólidos. Después, un tratamiento biológico ayuda a reducir la materia orgánica. La regeneración incorpora las etapas necesarias, como filtración y desinfección, para el uso previsto.', 'El proceso no es una receta universal. Necesita diseño técnico, gestión de residuos, análisis y autorizaciones. Si los controles no cumplen, se retiene el agua y no se suministra.', 'Los sensores permitirían vigilar ciertos parámetros, pero no sustituyen todos los análisis. No disponemos de una planta real ni de datos en directo.', 'Referencia: MITECO, reutilización de aguas tratadas: https://www.miteco.gob.es/es/agua/temas/concesiones-y-autorizaciones/reutilizacion-aguas-depuradas.html'])
     });
 
+    const purposeBriefs = [
+      'Recuperar agua de excrementos humanos y animales para el riego.',
+      'Ser una empresa responsable, cercana y transparente.',
+      'Usar menos agua dulce y cuidar las zonas verdes.',
+      'Responder a la sequía y a la escasez de agua.'
+    ];
     list.push({
       title: 'Las cuatro preguntas del propósito', chapter: 'Actividad 1 · Propósito · 3:00', theme: 'light',
-      body: titleBlock('ACTIVIDAD 1 · NUESTRA RAZÓN DE SER', 'Cuatro preguntas. <em>Un propósito.</em>') + `<div class="deck-cards deck-purpose-grid">${questions.map((question, i) => `<article class="deck-card deck-purpose-card"><div class="deck-purpose-card-heading"><span class="deck-purpose-number" aria-hidden="true">0${i + 1}</span><h3>${esc(question.title)}</h3></div><p>${esc(short(sentences(state.answers[i]).slice(0, 2).join(' ') || state.answers[i], 230))}</p></article>`).join('')}</div>`,
+      body: titleBlock('ACTIVIDAD 1 · NUESTRA RAZÓN DE SER', 'Cuatro preguntas. <em>Un propósito.</em>') + `<div class="deck-cards deck-purpose-grid">${questions.map((question, i) => `<article class="deck-card deck-purpose-card"><div class="deck-purpose-card-heading"><span class="deck-purpose-number" aria-hidden="true">0${i + 1}</span><h3>${esc(question.title)}</h3></div><p>${esc(state.answers[i] === defaults.answers[i] ? purposeBriefs[i] : short(sentences(state.answers[i])[0] || state.answers[i], 105))}</p></article>`).join('')}</div>`,
       notes: paragraphs(['Tiempo orientativo: 3 minutos. Recorred las cuatro preguntas en este orden y dedicad unos 45 segundos a cada una. Las tarjetas resumen las respuestas; el texto completo se conserva aquí.']) + questions.map((question, i) => `<p><strong>${i + 1}. ${esc(question.title)}</strong></p>` + paragraphs([state.answers[i], question.note])).join('')
     });
 
