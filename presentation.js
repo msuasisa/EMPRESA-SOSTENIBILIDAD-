@@ -93,8 +93,8 @@
 
     const goals = [6, 12, 11, 2];
     list.push({
-      title: 'Nuestros ODS prioritarios', chapter: 'Actividad 2 · ODS · 1:15', theme: 'light',
-      body: titleBlock('ACTIVIDAD 2 · IMPACTO CON DIRECCIÓN', '17 objetivos.<br><em>Cuatro prioridades justificadas.</em>') + `<div class="deck-cards">${goals.map(n => `<article class="deck-card deck-ods-card"><span class="deck-ods-number" style="--deck-ods:${ods[n - 1][2]}">${n}</span><div><span class="deck-card-tag">OBJETIVO DE DESARROLLO SOSTENIBLE</span><h3>${esc(ods[n - 1][1])}</h3><p>${esc(short(priority[n].why, 160))}</p></div></article>`).join('')}</div>`,
+      title: 'ODS · Objetivos de Desarrollo Sostenible', chapter: 'Actividad 2 · ODS · 1:15', theme: 'light',
+      body: titleBlock('ACTIVIDAD 2 · IMPACTO CON DIRECCIÓN', 'ODS: Objetivos de<br><em>Desarrollo Sostenible.</em>') + `<div class="deck-cards">${goals.map(n => `<article class="deck-card deck-ods-card"><span class="deck-ods-number" style="--deck-ods:${ods[n - 1][2]}">${n}</span><div><h3>${esc(ods[n - 1][1])}</h3><p>${esc(short(priority[n].why, 160))}</p></div></article>`).join('')}</div>`,
       notes: paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. ODS 6 es el núcleo; ODS 12 explica el uso responsable del recurso; ODS 11 conecta con parques y ciudades; ODS 2 es una contribución agrícola por validar. ODS 9 complementa el proyecto mediante infraestructura, sensores y redes separadas.']) + goals.map(n => `<p><strong>ODS ${n} · ${esc(ods[n - 1][1])}</strong><br>${esc(priority[n].why)}<br><br>${esc(priority[n].action)}<br><br>${esc(priority[n].target)}</p>`).join('')
     });
 
@@ -104,8 +104,8 @@
       G: {body:'Trabajar con permisos, controles y responsables claros.', action:'Registrar los controles y atender las incidencias.'}
     };
     list.push({
-      title: 'Criterios ASG', chapter: 'Actividad 2 · ASG · 1:15', theme: 'light',
-      body: titleBlock('CRITERIOS ASG · CÓMO TRABAJARÍAMOS', 'Cuidar el entorno.<br><em>Trabajar con responsabilidad.</em>') + `<div class="deck-asg-grid">${asg.map(a => {const brief=asgBrief[a.key] || a; return `<article class="deck-card deck-asg-card"><span class="deck-asg-letter" aria-hidden="true">${a.key}</span><h3>${esc(a.name)}</h3><p>${esc(brief.body)}</p><div class="deck-asg-action"><strong>ACCIÓN PROPUESTA</strong><p>${esc(brief.action)}</p></div></article>`;}).join('')}</div>`,
+      title: 'ASG · Ambiental, Social y Gobernanza', chapter: 'Actividad 2 · ASG · 1:15', theme: 'light',
+      body: titleBlock('CÓMO TRABAJARÍAMOS', 'ASG: Ambiental, Social<br><em>y Gobernanza.</em>') + `<div class="deck-asg-grid">${asg.map(a => {const brief=asgBrief[a.key] || a; return `<article class="deck-card deck-asg-card"><span class="deck-asg-letter" aria-hidden="true">${a.key}</span><h3>${esc(a.name)}</h3><p>${esc(brief.body)}</p><div class="deck-asg-action"><strong>ACCIÓN PROPUESTA</strong><p>${esc(brief.action)}</p></div></article>`;}).join('')}</div>`,
       notes: paragraphs(['Tiempo orientativo: 1 minuto y 15 segundos. Ambiental es cómo cuidamos el agua y gestionamos los impactos; social, cómo protegemos e informamos a las personas; gobernanza, quién responde y cómo se comprueba lo que hacemos.']) + asg.map(a => `<p><strong>${esc(a.name)}</strong><br>${esc(a.body)}<br><br>${esc(a.action)}<br><br>${esc(a.evidence)}</p>`).join('')
     });
 

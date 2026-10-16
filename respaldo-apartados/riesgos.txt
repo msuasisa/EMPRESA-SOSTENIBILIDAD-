@@ -1,0 +1,123 @@
+HIDROGENESIS · CONTENIDO AMPLIADO ARCHIVADO
+Copia de texto para futuras modificaciones. No forma parte de la web publicada.
+
+HIDROGENESIS · SOM SOSTENIBLES
+
+Anticipar los retos.
+Preparar las respuestas.
+
+Qué podría dificultar el proyecto y qué oportunidades podríamos aprovechar, con acciones y responsables propuestos.
+
+ENTREGABLE 2 · RISCOS I OPORTUNITATSPensar qué puede pasar nos ayuda a decidir.
+
+Un riesgo
+
+Es algo que podría perjudicar al proyecto, a las personas o al entorno. Por ejemplo: que una avería produzca agua que no cumpla la calidad necesaria.
+
+Una oportunidad
+
+Es una posibilidad que podríamos aprovechar. Por ejemplo: comprobar en un piloto cómo regar una zona verde con agua regenerada.
+
+Las prioridades que aparecen abajo son orientativas. Una revisión real necesitaría conocer la instalación, la probabilidad de cada fallo, sus consecuencias y los controles disponibles.
+
+La matriz completa.
+
+Combina los filtros para ver un tipo de responsabilidad o un ODS. Cada tarjeta explica el caso y permite abrir la respuesta que proponemos.
+
+TodosAmbientalSocialGobernanza
+
+Filtrar por ODS Todos los ODSODS 2 · Agricultura sostenibleODS 6 · Agua y saneamientoODS 11 · Ciudades sosteniblesODS 12 · Recursos responsables
+
+Valoraciones orientativas del caso ilustrativo
+
+↘ Riscos Lo que debemos anticipar
+
+Un tratamiento insuficiente
+
+ASG: A · ODS: 6, 12 · Prioridad alta
+
+Una avería o un control inadecuado puede producir agua que no cumpla la calidad requerida y causar daños a personas o al entorno.
+
+Respuesta e indicador propuestos: Retener el agua y detener el suministro ante un incumplimiento; analizar y corregir antes de reanudar. Responsable propuesto: calidad y operación. Revisión: según el plan de control. Indicador: incumplimientos e incidencias.
+
+Energía y distribución demasiado costosas
+
+ASG: A · ODS: 6, 12 · Prioridad alta
+
+El tratamiento, el bombeo y las distancias pueden hacer inviable el servicio o aumentar su impacto ambiental.
+
+Respuesta e indicador propuestos: Elegir un piloto cercano y calcular inversión, energía y distribución antes de ofrecer un precio. Responsable propuesto: operaciones y finanzas. Revisión: mensual. Indicador: kWh/m³ y coste total por m³.
+
+Rechazo al origen del agua
+
+ASG: S · ODS: 11, 2 · Prioridad alta
+
+La ciudadanía puede desconfiar por falta de información o por dudas razonables sobre salud, olores y manejo del agua.
+
+Respuesta e indicador propuestos: Explicar para qué sirve el agua, mostrar los controles y recoger las dudas antes del piloto. Responsable propuesto: atención a la comunidad. Revisión: mensual. Indicador: consultas y tiempo de respuesta.
+
+Retrasos en permisos o fallos de trazabilidad
+
+ASG: G · ODS: 6, 12 · Prioridad alta
+
+Empezar sin las autorizaciones necesarias o no poder reconstruir un suministro compromete la viabilidad y la confianza.
+
+Respuesta e indicador propuestos: Revisar requisitos con personal competente y registrar origen, tratamiento, controles y destino. Responsable propuesto: dirección y calidad. Revisión: antes de operar y en cada suministro. Indicador: permisos y registros completos.
+
+↗ Oportunitats Lo que podemos impulsar
+
+Dar otro uso al agua que ya usamos
+
+ASG: A · ODS: 6, 12 · Potencial alto
+
+Un piloto puede comprobar cuánta agua se puede reutilizar y en qué condiciones, evitando depender solo de nuevas extracciones.
+
+Respuesta e indicador propuestos: Comparar la demanda del parque con el agua disponible y su calidad. Responsable propuesto: operación. Revisión: mensual durante el piloto. Indicador: m³ suministrados y volumen de otras fuentes sustituido, si se acredita.
+
+Parques y cultivos con más opciones de riego
+
+ASG: A · ODS: 2, 11 · Potencial alto
+
+Disponer de una fuente complementaria puede apoyar zonas verdes y, en una fase posterior, el riego agrícola autorizado.
+
+Respuesta e indicador propuestos: Empezar en una zona verde y evaluar después cultivos y condiciones específicas. Responsable propuesto: coordinación municipal y técnica. Revisión: trimestral. Indicador: superficie atendida y m³ por destino.
+
+Una comunidad que entiende y participa
+
+ASG: S · ODS: 11 · Potencial medio
+
+La información clara y las visitas educativas pueden ayudar a comprender la reutilización y mejorar el proyecto con aportaciones vecinales.
+
+Respuesta e indicador propuestos: Preparar una sesión con el ayuntamiento y evaluar las dudas antes y después. Responsable propuesto: comunicación. Revisión: por actividad. Indicador: participación y comprensión, sin confundir asistencia con aceptación.
+
+Transparencia que se puede comprobar
+
+ASG: G · ODS: 6, 12 · Potencial alto
+
+Publicar resultados comprensibles y revisar los controles con un laboratorio competente puede reforzar la confianza.
+
+Respuesta e indicador propuestos: Diseñar un informe de calidad que indique fecha, uso permitido y límites del dato. Responsable propuesto: calidad. Revisión: según el plan de control. Indicador: controles realizados y registros accesibles.
+
+¿Cómo actuaríamos ante un incumplimiento?
+
+- Retener. Detener el suministro afectado y evitar que se use agua que no cumpla.
+
+- Analizar. Revisar qué ha pasado y qué parte del sistema está afectada.
+
+- Corregir. Resolver la causa y comunicar la incidencia a quienes corresponda.
+
+- Comprobar. Reanudar solo cuando se hayan cumplido las condiciones previstas.
+
+Es un ejemplo para explicar la respuesta. El protocolo concreto debe formar parte del diseño y del plan de gestión del riesgo.
+
+De una buena idea a un compromiso concreto.
+
+Una persona responsable
+
+Debe quedar claro quién revisa los controles, quién decide parar y quién comunica una incidencia. Decir “la empresa lo hará” resulta demasiado general.
+
+Un dato que podamos comprobar
+
+Registraríamos volúmenes, resultados de controles, energía por m³, coste del servicio y dudas atendidas. De momento son indicadores propuestos, no resultados.
+
+Por ejemplo: “Operaciones revisará el consumo energético del piloto cada mes, usando los kWh consumidos y los m³ tratados”. Así sabemos quién lo hace, cuándo y con qué datos.

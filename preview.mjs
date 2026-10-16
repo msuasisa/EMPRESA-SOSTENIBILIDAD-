@@ -6,14 +6,8 @@ import path from 'node:path';
 const root = fileURLToPath(new URL('./', import.meta.url));
 const files = new Map([
   ['/index.html', 'text/html; charset=utf-8'],
-  ['/proposito.html', 'text/html; charset=utf-8'],
-  ['/proceso.html', 'text/html; charset=utf-8'],
-  ['/ods-asg.html', 'text/html; charset=utf-8'],
-  ['/riesgos.html', 'text/html; charset=utf-8'],
   ['/project.js', 'text/javascript; charset=utf-8'],
   ['/matrix.js', 'text/javascript; charset=utf-8'],
-  ['/details.js', 'text/javascript; charset=utf-8'],
-  ['/details.css', 'text/css; charset=utf-8'],
   ['/styles.css', 'text/css; charset=utf-8'],
   ['/app.js', 'text/javascript; charset=utf-8'],
   ['/presentation.css', 'text/css; charset=utf-8'],

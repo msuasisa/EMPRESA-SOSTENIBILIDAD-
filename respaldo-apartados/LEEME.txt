@@ -1,0 +1,7 @@
+Las cuatro páginas ampliadas se conservan aquí como texto, fuera de la web publicada.
+
+proposito.txt, proceso.txt, ods-asg.txt y riesgos.txt contienen las explicaciones completas, incluidas las respuestas, los ODS, los criterios ASG y la matriz generados a partir de los datos iniciales del proyecto.
+
+La carpeta fuentes conserva copias exactas del HTML original y de details.js y details.css, con extensión TXT. Para restaurar las páginas se pueden copiar esas fuentes a la raíz del proyecto, quitar la extensión .txt y restablecer sus enlaces y las rutas del servidor local. Los datos y la matriz compartidos siguen en project.js y matrix.js.
+
+Estos TXT deben permanecer fuera de dist y de la lista de archivos del servidor de vista previa. No añadir enlaces desde la web.
