@@ -60,7 +60,6 @@
   const ringArt = `<div class="deck-cover-art" aria-hidden="true"><div class="deck-orbit"></div><div class="deck-orbit"></div><svg viewBox="0 0 420 420" fill="none"><defs><linearGradient id="deck-water" x1="120" y1="80" x2="300" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#d7fff1"/><stop offset=".5" stop-color="#82dcda"/><stop offset="1" stop-color="#2088a8"/></linearGradient></defs><ellipse cx="210" cy="350" rx="160" ry="29" stroke="#7ccece" opacity=".3"/><ellipse cx="210" cy="350" rx="120" ry="15" fill="#062e3b"/><path d="M210 55C188 101 112 173 112 237a98 98 0 0 0 196 0C308 173 232 101 210 55Z" fill="url(#deck-water)"/><path d="M150 232c0-27 15-49 32-71" stroke="#e1fff7" stroke-width="11" stroke-linecap="round" opacity=".7"/><path d="M165 266c23 25 62 29 92 4" stroke="#d3fff0" stroke-width="4" stroke-linecap="round"/></svg><span class="deck-art-label">REGENERAR · CONTROLAR · REUTILIZAR</span></div>`;
 
   function buildSlides() {
-    const questionTags = ['Nuestra razón de ser', 'La empresa que queremos ser', 'Valor para nuestros grupos de interés', 'El entorno al que respondemos'];
     const list = [{
       title: 'Hidrogenesis', chapter: 'Apertura · 0:45', theme: 'dark',
       body: `<div class="deck-cover-grid"><div><div class="deck-kicker">ZINKERS FP · REPTE SOM PROFESSIONALS</div><h2 class="deck-cover-title" id="deck-slide-title" tabindex="-1"><span>Som Sostenibles · Repte Som Professionals</span>Hidro<br><em>genesis.</em></h2><p class="deck-cover-description">Cuidar el agua.<br>Cuidar a las personas.<br>Dar otra oportunidad a cada gota.</p><div class="deck-company"><span aria-hidden="true">↗</span><strong>${esc(state.company)}</strong><small>NUESTRA EMPRESA<br>PROPUESTA EDUCATIVA</small></div></div>${ringArt}</div>`,
@@ -77,15 +76,10 @@
       notes:paragraphs(['Tiempo orientativo: 1 minuto y 30 segundos. No hacemos agua de la nada: recuperamos el agua que ya forma parte de las aguas residuales, principalmente urbanas de origen humano.', 'Primero se separan sólidos. Después, un tratamiento biológico ayuda a reducir la materia orgánica. La regeneración incorpora las etapas necesarias, como filtración y desinfección, para el uso previsto.', 'El proceso no es una receta universal. Necesita diseño técnico, gestión de residuos, análisis y autorizaciones. Si los controles no cumplen, se retiene el agua y no se suministra.', 'Los sensores permitirían vigilar ciertos parámetros, pero no sustituyen todos los análisis. No disponemos de una planta real ni de datos en directo.', 'Referencia: MITECO, reutilización de aguas tratadas: https://www.miteco.gob.es/es/agua/temas/concesiones-y-autorizaciones/reutilizacion-aguas-depuradas.html'])
     });
 
-    questions.forEach((question, i) => {
-      const parts = sentences(state.answers[i]);
-      const lead = short(parts[0] || state.answers[i], 245);
-      const supporting = parts.slice(1, 3).map(text => short(text, 220));
-      list.push({
-        title: question.title, chapter: 'Propósito · ' + (i + 1) + ' de 4 · 0:45', theme: 'light',
-        body: `<div class="deck-question-layout"><div class="deck-question-heading"><div class="deck-kicker">ACTIVIDAD 1 · ${esc(question.label)}</div><div class="deck-big-number" aria-hidden="true">0${i + 1}</div><h2 class="deck-heading" id="deck-slide-title" tabindex="-1">${esc(question.title)}</h2><span class="deck-pill">${esc(questionTags[i])}</span></div><div><blockquote class="deck-quote">${esc(lead)}</blockquote>${supporting.length ? `<ul class="deck-idea-list">${supporting.map(text => `<li>${esc(text)}</li>`).join('')}</ul>` : ''}<span class="deck-excerpt-note">Ideas principales de la respuesta · texto completo en el guion</span></div></div>`,
-        notes: paragraphs(['Tiempo orientativo: 45 segundos. Resumid la idea principal y añadid un ejemplo; no hace falta leer el párrafo entero.', state.answers[i], question.note])
-      });
+    list.push({
+      title: 'Las cuatro preguntas del propósito', chapter: 'Actividad 1 · Propósito · 3:00', theme: 'light',
+      body: titleBlock('ACTIVIDAD 1 · NUESTRA RAZÓN DE SER', 'Cuatro preguntas. <em>Un propósito.</em>') + `<div class="deck-cards deck-purpose-grid">${questions.map((question, i) => `<article class="deck-card deck-purpose-card"><div class="deck-purpose-card-heading"><span class="deck-purpose-number" aria-hidden="true">0${i + 1}</span><h3>${esc(question.title)}</h3></div><p>${esc(short(sentences(state.answers[i]).slice(0, 2).join(' ') || state.answers[i], 230))}</p></article>`).join('')}</div>`,
+      notes: paragraphs(['Tiempo orientativo: 3 minutos. Recorred las cuatro preguntas en este orden y dedicad unos 45 segundos a cada una. Las tarjetas resumen las respuestas; el texto completo se conserva aquí.']) + questions.map((question, i) => `<p><strong>${i + 1}. ${esc(question.title)}</strong></p>` + paragraphs([state.answers[i], question.note])).join('')
     });
 
     list.push({

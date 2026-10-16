@@ -25,7 +25,7 @@ Abre `index.html` o ejecuta `node preview.mjs` y visita http://127.0.0.1:4173. N
 
 ## Presentación
 
-14 diapositivas con transiciones horizontales, índice, temporizador y guion orientativo para unos 15 minutos. El lienzo 16:9 se escala a la ventana sin scroll. El navegador debe permitir la pantalla completa para activarla con el botón o la tecla F.
+11 diapositivas con transiciones horizontales, índice, temporizador y guion orientativo para unos 15 minutos. Las cuatro preguntas del propósito se reúnen en la diapositiva 4, con respuestas breves en una cuadrícula y el texto completo en el guion. El lienzo 16:9 se escala a la ventana sin scroll. El navegador debe permitir la pantalla completa para activarla con el botón o la tecla F.
 
 - Flechas, Re Pág / Av Pág: navegar.
 - Inicio / Fin: primera o última diapositiva.
@@ -34,7 +34,7 @@ Abre `index.html` o ejecuta `node preview.mjs` y visita http://127.0.0.1:4173. N
 - F: pantalla completa.
 - Escape: cerrar el índice o volver al inicio.
 
-El enlace `index.html#presentacion/13` abre los indicadores. Las unidades y sus descripciones disponen de columnas independientes para evitar solapamientos. La evaluación académica se ha retirado del sitio, las diapositivas y la descarga.
+El enlace `index.html#presentacion/10` abre los indicadores. Las unidades y sus descripciones disponen de columnas independientes para evitar solapamientos. La evaluación académica se ha retirado del sitio, las diapositivas y la descarga.
 
 ## Edición y guardado
 
