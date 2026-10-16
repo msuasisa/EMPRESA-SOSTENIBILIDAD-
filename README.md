@@ -16,7 +16,7 @@ Abre `index.html` o ejecuta `node preview.mjs` y visita http://127.0.0.1:4173. N
 | `ods-asg.html` | ODS prioritarios, criterios ASG y explorador de los 17 objetivos |
 | `riesgos.html` | Matriz filtrable, respuesta ante incidencias y seguimiento |
 | `project.js` | Datos compartidos y recuperación de respuestas guardadas |
-| `app.js` | Interacciones del inicio, edición, descarga e impresión |
+| `app.js` | Interacciones del inicio y edición del proyecto |
 | `matrix.js` | Filtros y tarjetas de riesgos compartidos |
 | `details.js` | Contenido dinámico y navegación de las páginas interiores |
 | `styles.css`, `details.css` | Diseño del inicio y de las páginas interiores |
@@ -34,7 +34,7 @@ Abre `index.html` o ejecuta `node preview.mjs` y visita http://127.0.0.1:4173. N
 - F: pantalla completa.
 - Escape: cerrar el índice o volver al inicio.
 
-El enlace `index.html#presentacion/10` abre los indicadores. Las unidades y sus descripciones disponen de columnas independientes para evitar solapamientos. La evaluación académica se ha retirado del sitio, las diapositivas y la descarga.
+El enlace `index.html#presentacion/10` abre los indicadores. Las unidades y sus descripciones disponen de columnas independientes para evitar solapamientos. La evaluación académica se ha retirado del sitio y de las diapositivas.
 
 ## Edición y guardado
 
@@ -42,7 +42,7 @@ El editor del inicio permite modificar empresa, equipo, curso, las cuatro respue
 
 Los cambios se guardan en este navegador bajo `hidrogenesis-project-v3`. Si existe una versión anterior del proyecto del agua, se conservan sus respuestas y datos de equipo y se actualiza el nombre anterior. No se borran las claves antiguas. Si solo existe el primer ejemplo de mobiliario, se recuperan únicamente equipo y curso.
 
-La descarga Markdown incluye propósito, misión, proceso, ODS, ASG y matriz. La impresión del inicio despliega los contenidos completos. El guardado local no sincroniza dispositivos.
+El guardado local no sincroniza dispositivos.
 
 ## Publicación
 

@@ -4,7 +4,7 @@ let toastTimer;
 function toast(message) { const el = $('#toast'); el.textContent = message; el.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 4500); }
 function persist() {
   try { localStorage.setItem(KEY, JSON.stringify({version:3,data:state})); return true; }
-  catch { toast('Cambios aplicados en esta sesión. El navegador no permite guardarlos; descarga el proyecto para conservarlos.'); return false; }
+  catch { toast('Cambios aplicados en esta sesión. El navegador no permite guardarlos; copia tus respuestas antes de cerrar la página para conservarlas.'); return false; }
 }
 function renderPurpose() {
   $('#purpose-tabs').innerHTML = questions.map((q,i) => `<button class="question-button" id="question-${i}" role="tab" aria-selected="${currentQuestion === i}" aria-controls="purpose-panel" tabindex="${currentQuestion === i ? 0 : -1}" data-question="${i}"><span class="question-index">0${i+1}</span><span><strong>${q.title}</strong><small>${q.short}</small></span><span class="question-arrow" aria-hidden="true">↗</span></button>`).join('');
@@ -84,48 +84,6 @@ $('#editor-form').addEventListener('submit',e=>{
   updateProject();const saved=persist();closeEditor();if(saved)toast('Proyecto guardado en este navegador.');
 });
 $('#editor-form').addEventListener('input',e=>{if(e.target.setCustomValidity)e.target.setCustomValidity('');});
-function downloadProject() {
-  const lines = [
-    '# Hidrogenesis · Repte Som Professionals: Som Sostenibles', '',
-    `Empresa: ${state.company}`, `Equipo: ${state.team}`, `Curso: ${state.course}`, '',
-    'Propuesta educativa de regeneración de aguas residuales para usos no potables autorizados. Acciones e indicadores propuestos, sin resultados operativos acreditados.', '',
-    '## Actividad 1 · Propósito y misión',
-    ...questions.flatMap((question,index) => ['', '### '+question.title, state.answers[index]]), '',
-    '## Entregable 1 · Propósito y misión', state.mission, '',
-    '## El proceso explicado fácil',
-    'Aguas residuales urbanas → separación → tratamiento biológico → filtración y desinfección → controles → riego autorizado.',
-    'Esquema simplificado: el diseño depende del origen y el destino. No proponemos agua para beber. Los efluentes ganaderos necesitan un estudio específico.',
-    'Cliente principal propuesto: ayuntamientos y gestores de zonas verdes. Agricultura: siguiente fase por validar.', '',
-    '## Actividad 2 · ODS prioritarios',
-    ...Object.entries(priority).flatMap(([n,item]) => ['', `### ODS ${n} · ${ods[Number(n)-1][1]}`, item.why, 'Acción: '+item.action, item.metric, item.target]),
-    '', 'ODS 9: conexión complementaria con las instalaciones, los sensores y las redes de distribución.', '',
-    '## Criterios ASG',
-    ...asg.flatMap(item => ['', '### '+item.name, item.body, 'Acción: '+item.action, 'Evidencia: '+item.evidence]), '',
-    '## Entregable 2 · Riscos i oportunitats',
-    ...matrix.flatMap(row => ['', `### ${row.type==='risk'?'Riesgo':'Oportunidad'} · ${row.title}`, `ASG: ${row.asg}. ODS: ${row.ods.join(', ')}. ${row.level} (valoración orientativa).`, row.description, 'Respuesta: '+row.response]), '',
-    '## Referencias',
-    '- Reutilización del agua · MITECO: https://www.miteco.gob.es/es/agua/temas/concesiones-y-autorizaciones/reutilizacion-aguas-depuradas.html',
-    '- Agenda 2030: https://sdgs.un.org/es/goals',
-    '- Zinkers: https://zinkers.fundacionrepsol.com'
-  ];
-  const blob=new Blob(['\uFEFF'+lines.join('\n')],{type:'text/markdown;charset=utf-8'});
-  const url=URL.createObjectURL(blob), link=document.createElement('a');
-  link.href=url;link.download='hidrogenesis-repte-som-professionals.md';document.body.append(link);link.click();link.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1500);toast('Proyecto descargado con respuestas, proceso, ODS, ASG y matriz.');
-}
-$('#export-project').addEventListener('click',downloadProject);
-let printCleanup=[];
-function preparePrint(){
-  if(printCleanup.length)return;
-  const panel=$('#purpose-panel');panel.hidden=true;panel.style.display='none';printCleanup.push(()=>{panel.hidden=false;panel.style.display='';});
-  const allAnswers=document.createElement('div');allAnswers.className='print-only';allAnswers.innerHTML=questions.map((q,i)=>`<article class="answer-panel print-answer"><h3>${i+1}. ${q.title}</h3><p>${escapeHTML(state.answers[i])}</p></article>`).join('');$('.purpose-layout').append(allAnswers);printCleanup.push(()=>allAnswers.remove());
-  const detail=$('#ods-detail');const original=detail.innerHTML;detail.innerHTML=Object.keys(priority).map(n=>`<div class="ods-detail">${odsDetailMarkup(Number(n)).replace('id="ods-detail-title"','')}</div>`).join('');detail.style.display='block';printCleanup.push(()=>{detail.innerHTML=original;detail.style.display='';});
-  const originalASG=asgFilter,originalODS=odsFilter;asgFilter='all';odsFilter='all';renderMatrix();printCleanup.push(()=>{asgFilter=originalASG;odsFilter=originalODS;renderMatrix();});
-  $$('details').forEach(d=>{const wasOpen=d.open;d.open=true;printCleanup.push(()=>d.open=wasOpen);});
-}
-function cleanupPrint(){printCleanup.reverse().forEach(fn=>fn());printCleanup=[];}
-window.addEventListener('beforeprint',preparePrint);window.addEventListener('afterprint',cleanupPrint);
-$('#print-project').addEventListener('click',()=>{preparePrint();window.print();});
 const menu=$('.menu-toggle');menu.addEventListener('click',()=>{const expanded=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(expanded));menu.setAttribute('aria-label',expanded?'Cerrar menú':'Abrir menú');$('#navigation').classList.toggle('open',expanded);});
 $$('#navigation a').forEach(a=>a.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menú');$('#navigation').classList.remove('open');}));
 window.addEventListener('keydown',e=>{if(e.key==='Escape' && $('#navigation').classList.contains('open')){menu.click();menu.focus();}});
