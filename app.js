@@ -95,15 +95,5 @@ if('IntersectionObserver' in window){
   document.documentElement.classList.add('js-reveal');
   const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target);}}),{threshold:.06});
   $$('.reveal').forEach(el=>revealObserver.observe(el));
-  const navigationObserver=new IntersectionObserver(entries=>{
-    const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top)[0];
-    if(!visible)return;
-    $$('#navigation a').forEach(link=>{
-      const active=link.hash==='#'+visible.target.id;
-      link.classList.toggle('current',active);
-      if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
-    });
-  },{rootMargin:'-20% 0px -60% 0px',threshold:0});
-  ['proposito','proceso','ods','matriz'].forEach(id=>navigationObserver.observe(document.getElementById(id)));
 }
 if (location.hash === '#editar') $('.editor-open').click();

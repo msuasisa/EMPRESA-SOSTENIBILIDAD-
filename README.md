@@ -1,6 +1,6 @@
 # Hidrogenesis · Repte Som Professionals
 
-Proyecto educativo sobre regeneración de aguas residuales para riego y otros usos no potables autorizados. Todos los apartados están en la página de inicio; la navegación desplaza a Propósito, Proceso, ODS y ASG, y Riesgos y oportunidades.
+Proyecto educativo sobre regeneración de aguas residuales para riego y otros usos no potables autorizados. La página de inicio ofrece el resumen y la presentación; el menú abre páginas propias de Propósito, Proceso, ODS y ASG, y Riesgos y oportunidades.
 
 ## Abrir la web
 
@@ -11,15 +11,20 @@ Abre `index.html` o ejecuta `node preview.mjs` y visita http://127.0.0.1:4173. N
 | Archivo | Contenido |
 | --- | --- |
 | `index.html` | Inicio, resumen interactivo, editor y presentación |
+| `proposito.html` | Las cuatro preguntas, grupos de interés, misión y modelo de servicio |
+| `proceso.html` | Tratamiento paso a paso, destinos, piloto y preguntas frecuentes |
+| `ods-asg.html` | ODS prioritarios, criterios ASG y explorador de los 17 objetivos |
+| `riesgos.html` | Matriz filtrable, respuesta ante incidencias y seguimiento |
 | `project.js` | Datos compartidos y recuperación de respuestas guardadas |
 | `app.js` | Interacciones del inicio y edición del proyecto |
 | `matrix.js` | Filtros y tarjetas de riesgos compartidos |
 | `styles.css` | Diseño adaptable de la página de inicio |
+| `details.js`, `details.css` | Interacciones y diseño de las páginas ampliadas |
 | `presentation.js`, `presentation.css` | Presentación panorámica y controles |
 | `preview.mjs` | Servidor local |
 | `respaldo-apartados/` | Copias TXT de los contenidos ampliados y sus fuentes originales; no se publican |
 
-Las páginas ampliadas anteriores están archivadas en `respaldo-apartados/proposito.txt`, `proceso.txt`, `ods-asg.txt` y `riesgos.txt`. La subcarpeta `fuentes/` conserva el HTML, JavaScript y CSS originales como TXT para poder restaurarlos. `LEEME.txt` explica cómo recuperarlos. Esta carpeta permanece fuera de `dist`, no tiene enlaces en la web y el servidor local no permite acceder a ella.
+Las páginas ampliadas se han restaurado desde las copias TXT. Se mantienen también `respaldo-apartados/proposito.txt`, `proceso.txt`, `ods-asg.txt` y `riesgos.txt`, y las fuentes originales en `fuentes/`, como respaldo. La carpeta de copias permanece fuera de `dist`, no tiene enlaces en la web y el servidor local no permite acceder a ella.
 
 ## Presentación
 
@@ -38,7 +43,7 @@ El enlace `index.html#presentacion/10` abre los indicadores. Las unidades y sus 
 
 ## Edición y guardado
 
-El editor del inicio permite modificar empresa, equipo, curso, las cuatro respuestas y la misión. La página y las diapositivas usan los mismos datos.
+El editor del inicio permite modificar empresa, equipo, curso, las cuatro respuestas y la misión. Las páginas ampliadas y las diapositivas usan los mismos datos.
 
 Los cambios se guardan en este navegador bajo `hidrogenesis-project-v3`. Si existe una versión anterior del proyecto del agua, se conservan sus respuestas y datos de equipo y se actualiza el nombre anterior. No se borran las claves antiguas. Si solo existe el primer ejemplo de mobiliario, se recuperan únicamente equipo y curso.
 
@@ -46,7 +51,7 @@ El guardado local no sincroniza dispositivos.
 
 ## Publicación
 
-Alojar juntos `index.html` y los archivos CSS y JavaScript activos. Mantener `respaldo-apartados/` fuera del directorio publicado. El alojamiento actual publica únicamente `dist`; los TXT se conservan en el repositorio, fuera de esa carpeta. Subir el código a GitHub no activa GitHub Pages automáticamente.
+Alojar juntos los cinco archivos HTML y sus archivos CSS y JavaScript. Las páginas ampliadas son archivos HTML reales que se pueden abrir directamente y recargar. Mantener `respaldo-apartados/` fuera del directorio publicado. El alojamiento actual publica únicamente `dist`; los TXT se conservan en el repositorio, fuera de esa carpeta. Subir el código a GitHub no activa GitHub Pages automáticamente.
 
 Las fuentes DM Sans y Manrope usan Google Fonts con alternativas del sistema. La ilustración SVG está incluida en el HTML. Se respeta la preferencia de movimiento reducido.
 
